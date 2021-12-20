@@ -44,5 +44,15 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:gravity="center"
-        android:text="짱구"></TextView>
+        android:id="@+id/JJ"
+        android:text="짱구">
+    </TextView>
+
+    <Button
+        android:id="@+id/go_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/JJ"
+        android:layout_marginBottom="0dp"
+        android:text="Login" />
 </RelativeLayout>
