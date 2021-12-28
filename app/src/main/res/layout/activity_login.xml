@@ -2,7 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingLeft="12dp"
+    android:paddingRight="12dp"
+    android:paddingTop="12dp">
 
     <Button
         android:layout_width="match_parent"
@@ -16,37 +19,58 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:textSize="25sp"
+        android:layout_marginBottom="16dp"
         android:text="LOGIN"/>
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:background="@null"
-        android:src="@mipmap/ic_launcher"/>
+        android:src="@drawable/sample"
+        android:layout_marginBottom="16dp"
+        />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"/>
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Email"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"/>
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Password" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="Login"/>
+        android:background="@drawable/btn_blue"
+        android:text="Login"
+        android:layout_marginBottom="16dp"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Or"/>
+        android:text="Or"
+        android:layout_marginBottom="16dp" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="Login"/>
+        android:background="@drawable/btn_darkblue"
+        android:text="Login with Google"
+        android:layout_marginBottom="16dp" />
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
