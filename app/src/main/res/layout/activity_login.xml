@@ -37,7 +37,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:hint="Email"/>
+            android:hint="Email"
+            android:id="@+id/TextInputEditText_email"/>
     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -48,22 +49,45 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:hint="Password" />
+            android:hint="Password"
+            android:id="@+id/TextInputEditText_password"/>
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
+    <RelativeLayout
+        android:id="@+id/RelativeLayout_login"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:orientation="horizontal"
         android:background="@drawable/btn_blue"
-        android:text="Login"
-        android:layout_marginBottom="16dp"/>
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:clickable="true"
+        android:weightSum="1">
+
+<!--    <Button-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:background="@drawable/btn_blue"-->
+<!--        android:text="Login"-->
+<!--        android:layout_marginBottom="16dp"/>-->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:stateListAnimator="@null"
+            android:text="Login"
+            android:textColor="@color/white" />
+
+    </RelativeLayout>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:text="Or"
-        android:layout_marginBottom="16dp" />
+        android:gravity="center"/>
 
     <Button
         android:layout_width="match_parent"
