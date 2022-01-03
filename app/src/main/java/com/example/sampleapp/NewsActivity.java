@@ -19,19 +19,19 @@ public class NewsActivity extends AppCompatActivity {
     private RecyclerView recyclerview;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-
+    String[] myDataset;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_news);
-        recyclerview = (RecyclerView) findViewById(R.id.recyclerview);
+        setContentView(R.layout.activity_news); //
+        recyclerview = findViewById(R.id.recyclerview); //
 
         recyclerview.setHasFixedSize(true);
 
         layoutManager = new LinearLayoutManager(this);
         recyclerview.setLayoutManager(layoutManager);
 
-        adapter = new NewsAdapter(newsDataset);
+        adapter = new NewsAdapter(myDataset);
         recyclerview.setAdapter(adapter);
     }
 }
