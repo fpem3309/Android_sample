@@ -15,6 +15,7 @@ import com.google.android.material.textfield.TextInputEditText;
 public class LoginActivity extends AppCompatActivity {
 TextView get_email;
 TextView get_password;
+Button go_news;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +24,7 @@ TextView get_password;
 
         get_email = findViewById(R.id.get_email);
         get_password = findViewById(R.id.get_password);
+        go_news = findViewById(R.id.go_news);
 
         Intent intent = getIntent();
 

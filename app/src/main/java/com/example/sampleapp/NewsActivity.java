@@ -19,7 +19,7 @@ public class NewsActivity extends AppCompatActivity {
     private RecyclerView recyclerview;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-    String[] myDataset;
+    String[] myDataset={"1","2"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
