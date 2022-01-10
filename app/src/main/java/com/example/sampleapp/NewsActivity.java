@@ -12,6 +12,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class NewsActivity extends AppCompatActivity {
@@ -19,7 +25,9 @@ public class NewsActivity extends AppCompatActivity {
     private RecyclerView recyclerview;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-    String[] myDataset={"1","2"};
+    String[] myDataset = {"1", "2"};
+    RequestQueue queue;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,5 +41,32 @@ public class NewsActivity extends AppCompatActivity {
 
         adapter = new NewsAdapter(myDataset);
         recyclerview.setAdapter(adapter);
+
+        queue = Volley.newRequestQueue(this);
+    }
+
+    public void getNews() {
+        // Instantiate the RequestQueue.
+
+        String url = "https://newsapi.org/v2/top-headlines?country=kr&apiKey=28d52abfe26f4f0488faff173822d17c";
+
+        // Request a string response from the provided URL.
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // Display the first 500 characters of the response string.
+                        //textView.setText("Response is: "+ response.substring(0,500));
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                //textView.setText("That didn't work!");
+            }
+        });
+
+        // Add the request to the RequestQueue.
+        queue.add(stringRequest);
+
     }
 }
