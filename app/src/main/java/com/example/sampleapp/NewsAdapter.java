@@ -10,9 +10,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.List;
+
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder> {
-    private String[] newsDataset;
+    private List<NewsData> newsDataset;
 
 
     // 2. 그 안의 요소를 찾아가는 ViewHolder Class
@@ -30,7 +32,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
             imageView_title = v.findViewById(R.id.imageView_title);
         }
     }
-    public NewsAdapter(String[] myDataset){
+    public NewsAdapter(List<NewsData> myDataset){
         newsDataset = myDataset;
     }
 
@@ -46,12 +48,12 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
     }
     @Override
     public void onBindViewHolder(@NonNull NewsViewHolder holder, int position) {
-        holder.textView_title.setText(newsDataset[position]);
+        //holder.textView_title.setText(newsDataset[position]);
     }
 
     @Override
     public int getItemCount() {
-        return newsDataset.length;
+        return 0;
     }
 
 }

@@ -20,6 +20,13 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.textfield.TextInputEditText;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class NewsActivity extends AppCompatActivity {
 
     private RecyclerView recyclerview;
@@ -39,10 +46,8 @@ public class NewsActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerview.setLayoutManager(layoutManager);
 
-        adapter = new NewsAdapter(myDataset);
-        recyclerview.setAdapter(adapter);
-
         queue = Volley.newRequestQueue(this);
+        getNews();
     }
 
     public void getNews() {
@@ -53,13 +58,40 @@ public class NewsActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        //textView.setText("Response is: "+ response.substring(0,500));
                         Log.d("News",response);
+
+                        try {
+
+                            JSONObject jsonObj = new JSONObject(response);
+                            JSONArray arrayArticles = jsonObj.getJSONArray("articles"); // articles라는 이름의 배열을 가져오기
+
+                            //response -> NewsData에 분류
+                            List<NewsData> news = new ArrayList<>();
+
+                            for(int i = 0, j = arrayArticles.length(); i < j; i++){
+                               JSONObject obj =  arrayArticles.getJSONObject(i);
+
+                                Log.d("News",obj.toString());
+
+                                NewsData newsdata = new NewsData();
+                                newsdata.setTitle( obj.getString("title"));
+                                newsdata.setUrlToImage( obj.getString("urlToImage"));
+                                newsdata.setContent(obj.getString("content"));
+
+                                news.add(newsdata);
+                            }
+
+                            adapter = new NewsAdapter(news);
+                            recyclerview.setAdapter(adapter);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                //textView.setText("That didn't work!");
+
             }
         });
 
