@@ -25,7 +25,7 @@ public class NewsActivity extends AppCompatActivity {
     private RecyclerView recyclerview;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-    String[] myDataset = {"1", "2"};
+    String[] myDataset = {"1", "2", "3"};
     RequestQueue queue;
 
     @Override
@@ -46,17 +46,15 @@ public class NewsActivity extends AppCompatActivity {
     }
 
     public void getNews() {
-        // Instantiate the RequestQueue.
 
         String url = "https://newsapi.org/v2/top-headlines?country=kr&apiKey=28d52abfe26f4f0488faff173822d17c";
 
-        // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        // Display the first 500 characters of the response string.
                         //textView.setText("Response is: "+ response.substring(0,500));
+                        Log.d("News",response);
                     }
                 }, new Response.ErrorListener() {
             @Override
