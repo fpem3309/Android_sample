@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -25,7 +26,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class NewsActivity extends AppCompatActivity {
 
@@ -91,12 +94,22 @@ public class NewsActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                Log.d("error","error!!!!!!!");
             }
-        });
+        }){
+            @Override
+            public Map getHeaders() throws AuthFailureError{
+                Map params = new HashMap();
+                params.put("User-Agent", "Mozilla/5.0");
+
+                return params;
+            }
+        };
+
 
         // Add the request to the RequestQueue.
         queue.add(stringRequest);
 
     }
+
 }
