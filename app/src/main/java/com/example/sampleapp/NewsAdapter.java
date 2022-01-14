@@ -1,5 +1,7 @@
 package com.example.sampleapp;
 
+import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +12,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.drawee.view.SimpleDraweeView;
+
 import java.util.List;
 
 
@@ -18,11 +23,11 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
 
 
     // 2. 그 안의 요소를 찾아가는 ViewHolder Class
-    protected static class NewsViewHolder extends RecyclerView.ViewHolder{
+    public static class NewsViewHolder extends RecyclerView.ViewHolder{
 
         public TextView textView_title;
         public TextView textView_content;
-        public ImageView imageView_title;
+        public SimpleDraweeView imageView_title;
 
         public NewsViewHolder(View v){
             super(v);
@@ -32,8 +37,9 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
             imageView_title = v.findViewById(R.id.imageView_title);
         }
     }
-    public NewsAdapter(List<NewsData> myDataset){
+    public NewsAdapter(List<NewsData> myDataset, Context context){
         newsDataset = myDataset;
+        Fresco.initialize(context);
     }
 
     // 1. RecyclerView의 항목화면 연결은 onCreateViewHolder함수
@@ -48,12 +54,20 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
     }
     @Override
     public void onBindViewHolder(@NonNull NewsViewHolder holder, int position) {
-        //holder.textView_title.setText(newsDataset[position]);
+
+        NewsData news = newsDataset.get(position);
+        holder.textView_title.setText(news.getTitle());
+        holder.textView_content.setText(news.getContent());
+
+
+        Uri uri = Uri.parse(news.getUrlToImage());
+        holder.imageView_title.setImageURI(uri);
+
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return newsDataset == null ? 0 : newsDataset.size();
     }
 
 }

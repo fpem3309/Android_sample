@@ -84,7 +84,7 @@ public class NewsActivity extends AppCompatActivity {
                                 news.add(newsdata);
                             }
 
-                            adapter = new NewsAdapter(news);
+                            adapter = new NewsAdapter(news, NewsActivity.this);
                             recyclerview.setAdapter(adapter);
 
                         } catch (JSONException e) {
