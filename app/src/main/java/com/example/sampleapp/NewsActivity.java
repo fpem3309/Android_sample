@@ -79,7 +79,7 @@ public class NewsActivity extends AppCompatActivity {
                                 NewsData newsdata = new NewsData();
                                 newsdata.setTitle( obj.getString("title"));
                                 newsdata.setUrlToImage( obj.getString("urlToImage"));
-                                newsdata.setContent(obj.getString("content"));
+                                newsdata.setContent(obj.getString("description"));
 
                                 news.add(newsdata);
                             }
