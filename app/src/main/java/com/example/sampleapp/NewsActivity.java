@@ -84,7 +84,17 @@ public class NewsActivity extends AppCompatActivity {
                                 news.add(newsdata);
                             }
 
-                            adapter = new NewsAdapter(news, NewsActivity.this);
+                            adapter = new NewsAdapter(news, NewsActivity.this, new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    if(view.getTag() != null){
+                                        int position = (int)view.getTag(); // null인데 int로 형변환하면 예외발생
+                                        ((NewsAdapter)adapter).getNews(position);
+                                        Intent intent = new Intent(NewsActivity.this, ContentActivity.class);
+                                        startActivity(intent);
+                                    }
+                                }
+                            });
                             recyclerview.setAdapter(adapter);
 
                         } catch (JSONException e) {

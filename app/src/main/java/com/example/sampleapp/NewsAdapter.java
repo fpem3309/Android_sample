@@ -20,6 +20,7 @@ import java.util.List;
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder> {
     private List<NewsData> newsDataset;
+    private static View.OnClickListener onClickListener;
 
 
     // 2. 그 안의 요소를 찾아가는 ViewHolder Class
@@ -28,6 +29,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
         public TextView textView_title;
         public TextView textView_content;
         public SimpleDraweeView imageView_title;
+        public View rootView;
 
         public NewsViewHolder(View v){
             super(v);
@@ -35,10 +37,16 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
             textView_title = v.findViewById(R.id.textView_title);
             textView_content = v.findViewById(R.id.textView_content);
             imageView_title = v.findViewById(R.id.imageView_title);
+            rootView = v;
+
+            v.setClickable(true); // 누를 수 있다
+            v.setEnabled(true); // 활성화 상태
+            v.setOnClickListener(onClickListener);
         }
     }
-    public NewsAdapter(List<NewsData> myDataset, Context context){
+    public NewsAdapter(List<NewsData> myDataset, Context context, View.OnClickListener onClick){
         newsDataset = myDataset;
+        onClickListener = onClick;
         Fresco.initialize(context);
     }
 
@@ -63,11 +71,17 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
         Uri uri = Uri.parse(news.getUrlToImage());
         holder.imageView_title.setImageURI(uri);
 
+        //tag
+        holder.rootView.setTag(position);
     }
 
     @Override
     public int getItemCount() {
         return newsDataset == null ? 0 : newsDataset.size();
+    }
+
+    public NewsData getNews(int position){
+        return newsDataset == null? null : newsDataset.get(position);
     }
 
 }
