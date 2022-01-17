@@ -74,7 +74,7 @@ public class NewsActivity extends AppCompatActivity {
                             for(int i = 0, j = arrayArticles.length(); i < j; i++){
                                JSONObject obj =  arrayArticles.getJSONObject(i);
 
-                                Log.d("News",obj.toString());
+                                //Log.d("News",obj.toString());
 
                                 NewsData newsdata = new NewsData();
                                 newsdata.setTitle( obj.getString("title"));
@@ -89,8 +89,13 @@ public class NewsActivity extends AppCompatActivity {
                                 public void onClick(View view) {
                                     if(view.getTag() != null){
                                         int position = (int)view.getTag(); // null인데 int로 형변환하면 예외발생
-                                        ((NewsAdapter)adapter).getNews(position);
+                                        String AllContent = ((NewsAdapter)adapter).getNews(position).getContent();
+
                                         Intent intent = new Intent(NewsActivity.this, ContentActivity.class);
+
+                                        Bundle bundle = new Bundle();
+                                        bundle.putString("AllContent",AllContent);
+                                        intent.putExtras(bundle);
                                         startActivity(intent);
                                     }
                                 }
