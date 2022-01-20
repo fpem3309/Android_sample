@@ -18,8 +18,8 @@ public class MainActivity extends AppCompatActivity {
 
     RelativeLayout RelativeLayout_login;
     TextInputEditText TextInputEditText_email, TextInputEditText_password;
-    String emailOK = "123";
-    String passwordOK = "456";
+    String emailOK = "a";
+    String passwordOK = "a";
 
     String inputEmail = "";
     String inputPassword ="";
