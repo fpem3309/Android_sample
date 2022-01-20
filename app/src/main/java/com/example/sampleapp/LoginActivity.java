@@ -2,21 +2,19 @@ package com.example.sampleapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.navigation.NavigationBarView;
 
 public class LoginActivity extends AppCompatActivity {
 
     BottomNavigationView nv;
     UserFragment fragment_user;
+    BoardFragment fragment_board;
 
 
     @Override
@@ -25,9 +23,28 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         fragment_user = new UserFragment();
+        fragment_board = new BoardFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,fragment_user).commit();
 
         nv = findViewById(R.id.bottomNavigationView);
+
+        nv.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch (item.getItemId()){
+                    case R.id.user_tab:
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,fragment_user).commit();
+
+                    break;
+
+                    case R.id.board_tab:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,fragment_board).commit();
+                        break;
+                }
+                return false;
+            }
+        });
 
         //받아온 user 정보
         Intent intent = getIntent();
