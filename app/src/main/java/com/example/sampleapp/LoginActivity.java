@@ -46,15 +46,20 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        //받아온 user 정보
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        String email = bundle.getString("email");
-        String password = bundle.getString("password");
+        String userEmail = bundle.getString("userEmail");
+        String userPassword = bundle.getString("userPassword");
 
-        //fragment로 보낼 user 정보
-        bundle.putString("email",email);
-        bundle.putString("password",password);
-        fragment_user.setArguments(bundle);
+        //받아온 user 정보
+//        Intent intent = getIntent();
+//        Bundle bundle = intent.getExtras();
+//        String email = bundle.getString("email");
+//        String password = bundle.getString("password");
+
+//        //fragment로 보낼 user 정보
+//        bundle.putString("email",email);
+//        bundle.putString("password",password);
+//        fragment_user.setArguments(bundle);
     }
 }
