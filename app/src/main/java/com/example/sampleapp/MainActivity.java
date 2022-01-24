@@ -24,11 +24,6 @@ public class MainActivity extends AppCompatActivity {
 
     RelativeLayout RelativeLayout_login;
     TextInputEditText TextInputEditText_email, TextInputEditText_password;
-//    String emailOK = "em";
-//    String passwordOK = "pa";
-//
-//    String inputEmail = "";
-//    String inputPassword ="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,82 +34,15 @@ public class MainActivity extends AppCompatActivity {
         TextInputEditText_password = findViewById(R.id.TextInputEditText_password);
         RelativeLayout_login = findViewById(R.id.RelativeLayout_login);
 
-//        // 이메일,비밀번호 검사
-//        TextInputEditText_email.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//                if(charSequence != null){
-//                    Log.d("SENTI","email"+charSequence.toString());
-//                    inputEmail = charSequence.toString();
-//                    RelativeLayout_login.setEnabled(validation());
-//                }
-//
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable editable) {
-//
-//            }
-//        });
-
-//        TextInputEditText_password.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//                if(charSequence != null){
-//                    Log.d("SENTI2","password"+charSequence.toString());
-//                    inputPassword = charSequence.toString();
-//                    RelativeLayout_login.setEnabled(validation());
-//                }
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable editable) {
-//
-//            }
-//        });
-
-//        // Login 클릭 감지
-//        //RelativeLayout_login.setClickable(true);
-//        RelativeLayout_login.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                // 값 가져오기
-//                String email = TextInputEditText_email.getText().toString();
-//                String password = TextInputEditText_password.getText().toString();
-//
-//                // 값 넘기기
-//                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-//                intent.putExtra("email",email);
-//                intent.putExtra("password",password);
-//                startActivity(intent);
-//            }
-//        });
-
         // Login 클릭 감지
         RelativeLayout_login.setClickable(true);
         RelativeLayout_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                // 값 가져오기
-//                String email = TextInputEditText_email.getText().toString();
-//                String password = TextInputEditText_password.getText().toString();
-
                 String userEmail = TextInputEditText_email.getText().toString();
                 String userPassword = TextInputEditText_password.getText().toString();
 
-                //여기부터
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
 
                     @Override
@@ -132,15 +60,16 @@ public class MainActivity extends AppCompatActivity {
                                 String userPassword = jsonObject.getString("userPassword");
 
                                 Toast.makeText(getApplicationContext(),"로그인에 성공하였습니다.",Toast.LENGTH_SHORT).show();
+
                                 Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                                 intent.putExtra("userEmail", userEmail);
                                 intent.putExtra("userPassword", userPassword);
                                 startActivity(intent);
 
-                                Log.d("SSS",userEmail+userPassword);
+                                Log.d("Success",userEmail+userPassword);
                             } else { // 로그인에 실패한 경우
                                 Toast.makeText(getApplicationContext(),"로그인에 실패하였습니다.",Toast.LENGTH_SHORT).show();
-                                Log.d("FFF",userEmail+userPassword);
+                                Log.d("Failed",userEmail+userPassword);
                                 return;
                             }
                         } catch (JSONException e) {
@@ -154,11 +83,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // 여기까지 복붙
-
     }
-//    public boolean validation() {
-//        Log.d("SENTI",inputEmail + " / " + inputPassword + " / " + inputEmail.equals(emailOK) + " / " + inputPassword.equals(passwordOK));
-//        return inputEmail.equals(emailOK) && inputPassword.equals(passwordOK);
-//    }
 }

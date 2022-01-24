@@ -51,6 +51,10 @@ public class LoginActivity extends AppCompatActivity {
         String userEmail = bundle.getString("userEmail");
         String userPassword = bundle.getString("userPassword");
 
+        bundle.putString("email",userEmail);
+        bundle.putString("password",userPassword);
+        fragment_user.setArguments(bundle);
+
         //받아온 user 정보
 //        Intent intent = getIntent();
 //        Bundle bundle = intent.getExtras();
