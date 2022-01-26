@@ -35,7 +35,6 @@ public class NewsActivity extends AppCompatActivity {
     private RecyclerView recyclerview;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-    String[] myDataset = {"1", "2", "3"};
     RequestQueue queue;
 
     @Override

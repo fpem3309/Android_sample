@@ -10,10 +10,22 @@
         android:orientation="vertical">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/board_no"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="test"/>
+        android:text="board_no"/>
+
+        <TextView
+            android:id="@+id/board_subject"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="board_subject"/>
+
+        <TextView
+            android:id="@+id/board_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="board_content"/>
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>
