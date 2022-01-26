@@ -26,6 +26,7 @@ public class BoardData implements Serializable {
         this.board_content = board_content;
     }
 
+
     public String getBoard_no() {
         return board_no;
     }
@@ -49,4 +50,5 @@ public class BoardData implements Serializable {
     public void setBoard_content(String board_content) {
         this.board_content = board_content;
     }
+
 }

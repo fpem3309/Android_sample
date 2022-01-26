@@ -3,6 +3,7 @@ package com.example.sampleapp;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,7 +12,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -48,10 +52,10 @@ public class BoardFragment extends Fragment {
         layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
 
+
         List<BoardData> boardDataList = new ArrayList<>();
 
         BoardData boardData = new BoardData();
-
         for(int i = 0; i<3; i++) {
 
             boardData.setBoard_no("1");
@@ -60,8 +64,12 @@ public class BoardFragment extends Fragment {
 
             boardDataList.add(boardData);
         }
+
         adapter = new BoardAdapter(boardDataList);
         recyclerView.setAdapter(adapter);
+
         return view;
+
+
     }
 }

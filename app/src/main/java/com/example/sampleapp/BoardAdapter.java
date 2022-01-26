@@ -6,7 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -15,9 +17,11 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHol
     private List<BoardData> boardDataList;
 
     public static class BoardViewHolder extends RecyclerView.ViewHolder {
+
         public TextView board_no;
         public TextView board_subject;
         public TextView board_content;
+        public CardView cardView_content;
 
         public BoardViewHolder(View view) {
             super(view);
@@ -25,6 +29,14 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHol
             board_no = view.findViewById(R.id.board_no);
             board_subject = view.findViewById(R.id.board_subject);
             board_content = view.findViewById(R.id.board_content);
+            cardView_content = view.findViewById(R.id.cardView_content);
+
+            cardView_content.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(view.getContext(),"click",Toast.LENGTH_SHORT).show();
+                }
+            });
         }
 
     }
@@ -48,6 +60,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHol
         viewHolder.board_no.setText(boardData.getBoard_no());
         viewHolder.board_subject.setText(boardData.getBoard_subject());
         viewHolder.board_content.setText(boardData.getBoard_content());
+
 
     }
 
