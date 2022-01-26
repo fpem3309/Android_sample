@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -31,10 +32,9 @@ import java.util.Map;
 
 public class BoardFragment extends Fragment {
 
-    private List<BoardData> boardDataList;
     private RecyclerView recyclerView;
-
-
+    private RecyclerView.Adapter adapter;
+    private RecyclerView.LayoutManager layoutManager;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -45,19 +45,23 @@ public class BoardFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerview);
 
         //리사이클러뷰의 레이아웃 매니저 설정
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
 
-        List<BoardData> boards = new ArrayList<>();
+        List<BoardData> boardDataList = new ArrayList<>();
 
         BoardData boardData = new BoardData();
-        boardData.setBoard_no("1");
-        boardData.setBoard_subject("sub");
-        boardData.setBoard_content("cont");
 
-        boards.add(boardData);
-        Log.d("board", String.valueOf(boardData));
+        for(int i = 0; i<3; i++) {
 
+            boardData.setBoard_no("1");
+            boardData.setBoard_subject("sub");
+            boardData.setBoard_content("cont");
+
+            boardDataList.add(boardData);
+        }
+        adapter = new BoardAdapter(boardDataList);
+        recyclerView.setAdapter(adapter);
         return view;
     }
 }
