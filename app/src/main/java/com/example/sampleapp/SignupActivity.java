@@ -1,16 +1,14 @@
 package com.example.sampleapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -20,34 +18,24 @@ import com.google.android.material.textfield.TextInputEditText;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class MainActivity extends AppCompatActivity {
+public class SignupActivity extends AppCompatActivity {
 
-    RelativeLayout RelativeLayout_login;
+    RelativeLayout RelativeLayout_Signup;
     TextInputEditText TextInputEditText_email, TextInputEditText_password;
-    Button btn_signup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_signup);
 
         TextInputEditText_email = findViewById(R.id.TextInputEditText_email);
         TextInputEditText_password = findViewById(R.id.TextInputEditText_password);
-        RelativeLayout_login = findViewById(R.id.RelativeLayout_login);
-        btn_signup = findViewById(R.id.btn_signup);
-
-        btn_signup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,SignupActivity.class);
-                startActivity(intent);
-            }
-        });
+        RelativeLayout_Signup = findViewById(R.id.RelativeLayout_Signup);
 
 
         // Login 클릭 감지
-        RelativeLayout_login.setClickable(true);
-        RelativeLayout_login.setOnClickListener(new View.OnClickListener() {
+        RelativeLayout_Signup.setClickable(true);
+        RelativeLayout_Signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -72,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
                                 Toast.makeText(getApplicationContext(),"로그인에 성공하였습니다.",Toast.LENGTH_SHORT).show();
 
-                                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                                Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
                                 intent.putExtra("userEmail", userEmail);
                                 intent.putExtra("userPassword", userPassword);
                                 startActivity(intent);
@@ -89,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 };
                 LoginRequest loginRequest = new LoginRequest(userEmail, userPassword, responseListener);
-                RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
+                RequestQueue queue = Volley.newRequestQueue(SignupActivity.this);
                 queue.add(loginRequest);
             }
         });

@@ -17,10 +17,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:gravity="center"
-        android:textSize="25sp"
         android:layout_marginBottom="16dp"
-        android:text="LOGIN"/>
+        android:gravity="center"
+        android:text="Sign Up"
+        android:textSize="25sp" />
 
     <ImageView
         android:layout_width="match_parent"
@@ -41,7 +41,6 @@
             android:id="@+id/TextInputEditText_email"/>
     </com.google.android.material.textfield.TextInputLayout>
 
-
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -53,8 +52,41 @@
             android:id="@+id/TextInputEditText_password"/>
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Password"
+            android:id="@+id/TextInputEditText_password_chk"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Name"
+            android:id="@+id/TextInputEditText_name"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Birth"
+            android:id="@+id/TextInputEditText_birth"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
     <RelativeLayout
-        android:id="@+id/RelativeLayout_login"
+        android:id="@+id/RelativeLayout_Signup"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:orientation="horizontal"
@@ -70,60 +102,9 @@
             android:layout_weight="1"
             android:gravity="center"
             android:stateListAnimator="@null"
-            android:text="Login"
-            android:textColor="@color/white" />
-
-    </RelativeLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Or"
-        android:gravity="center"/>
-
-    <RelativeLayout
-        android:id="@+id/RelativeLayout_password"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:background="@drawable/btn_darkblue"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp"
-        android:weightSum="1">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:stateListAnimator="@null"
-            android:text="Login with Google"
-            android:textColor="@color/white" />
-
-    </RelativeLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Find Password"
-            android:gravity="center"
-            android:textSize="20sp"
-            android:layout_weight="1"/>
-
-        <Button
-            android:id="@+id/btn_signup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="Sign Up"
-            android:gravity="center"
-            android:textColor="@android:color/holo_blue_dark"
-            android:textSize="20sp"
-            android:layout_weight="1"/>
-    </LinearLayout>
+            android:textColor="@color/white" />
+
+    </RelativeLayout>
 
 </LinearLayout>
