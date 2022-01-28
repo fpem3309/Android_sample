@@ -48,37 +48,21 @@ public class SignupActivity extends AppCompatActivity {
                     public void onResponse(String response) {
 
                         try {
-                            // TODO : 인코딩 문제때문에 한글 DB인 경우 로그인 불가
 
                             System.out.println("aaa" + response);
 
-                            JSONObject jsonObject = new JSONObject(response);
-                            boolean success = jsonObject.getBoolean("success");
-                            if (success) { // 로그인에 성공한 경우
-                                String userEmail = jsonObject.getString("userEmail");
-                                String userPassword = jsonObject.getString("userPassword");
+                            Intent intent = new Intent(SignupActivity.this, MainActivity.class);
+                            startActivity(intent);
 
-                                Toast.makeText(getApplicationContext(),"로그인에 성공하였습니다.",Toast.LENGTH_SHORT).show();
-
-                                Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
-                                intent.putExtra("userEmail", userEmail);
-                                intent.putExtra("userPassword", userPassword);
-                                startActivity(intent);
-
-                                Log.d("Success",userEmail+userPassword);
-                            } else { // 로그인에 실패한 경우
-                                Toast.makeText(getApplicationContext(),"로그인에 실패하였습니다.",Toast.LENGTH_SHORT).show();
-                                Log.d("Failed",userEmail+userPassword);
-                                return;
-                            }
-                        } catch (JSONException e) {
+                            Toast.makeText(getApplicationContext(),"가입 성공하였습니다.",Toast.LENGTH_SHORT).show();
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
                     }
                 };
-                LoginRequest loginRequest = new LoginRequest(userEmail, userPassword, responseListener);
+                SignupRequest signupRequest = new SignupRequest(userEmail, userPassword, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(SignupActivity.this);
-                queue.add(loginRequest);
+                queue.add(signupRequest);
             }
         });
 
