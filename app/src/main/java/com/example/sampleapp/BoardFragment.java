@@ -22,6 +22,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -39,6 +40,11 @@ public class BoardFragment extends Fragment {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
+    private List<BoardData> boardDataList;
+
+    BoardData boardData;
+    String url = "http://172.30.1.38:8081/test/Board.jsp";
+    RequestQueue requestQueue;  // 서버와 통신할 통로
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -52,24 +58,54 @@ public class BoardFragment extends Fragment {
         layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
 
+        requestQueue = Volley.newRequestQueue(getContext());
 
-        List<BoardData> boardDataList = new ArrayList<>();
 
-        BoardData boardData = new BoardData();
-        for(int i = 0; i<3; i++) {
-
-            boardData.setBoard_no("1");
-            boardData.setBoard_subject("sub");
-            boardData.setBoard_content("cont");
-
-            boardDataList.add(boardData);
+        getBoard();
+        return view;
         }
 
-        adapter = new BoardAdapter(boardDataList);
-        recyclerView.setAdapter(adapter);
+    public void getBoard() {
 
-        return view;
+        String url = "http://172.30.1.38:8081/test/Board.jsp";
 
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.d("board",response);
+
+                        try {
+
+                            JSONObject jsonObj = new JSONObject(response);
+
+                            //response -> NewsData에 분류
+                            List<BoardData> boards = new ArrayList<>();
+
+                            recyclerView.setAdapter(adapter);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("error","error!!!!!!!");
+            }
+        }){
+            @Override
+            public Map getHeaders() throws AuthFailureError{
+                Map params = new HashMap();
+                params.put("User-Agent", "Mozilla/5.0");
+
+                return params;
+            }
+        };
+
+
+        // Add the request to the RequestQueue.
+        requestQueue.add(stringRequest);
 
     }
-}
+    }

@@ -7,8 +7,8 @@ public class BoardData implements Serializable {
     private String board_subject;
     private String board_content;
 
-    public BoardData() {
 
+    public BoardData(BoardData boardData) {
     }
 
     @Override

@@ -83,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
 //                                Log.d("Failed",userEmail+userPassword);
 //                                return;
 //                            }
+
                             Toast.makeText(getApplicationContext(),"로그인에 성공하였습니다.",Toast.LENGTH_SHORT).show();
 
                             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
