@@ -49,7 +49,7 @@ public class SignupActivity extends AppCompatActivity {
 
                         try {
 
-                            System.out.println("aaa" + response);
+                            System.out.println("Response = " + response);
 
                             Intent intent = new Intent(SignupActivity.this, MainActivity.class);
                             startActivity(intent);
