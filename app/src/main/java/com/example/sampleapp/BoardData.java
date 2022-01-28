@@ -11,6 +11,10 @@ public class BoardData implements Serializable {
     public BoardData(BoardData boardData) {
     }
 
+    public BoardData() {
+
+    }
+
     @Override
     public String toString() {
         return "BoardData{" +

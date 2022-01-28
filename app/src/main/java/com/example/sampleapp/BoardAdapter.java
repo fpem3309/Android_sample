@@ -17,7 +17,6 @@ import java.util.List;
 
 public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHolder> {
     RequestQueue requestQueue;  // 서버와 통신할 통로
-
     private List<BoardData> boardDataList;
 
     public static class BoardViewHolder extends RecyclerView.ViewHolder {

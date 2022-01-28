@@ -42,8 +42,6 @@ public class BoardFragment extends Fragment {
     private RecyclerView.LayoutManager layoutManager;
     private List<BoardData> boardDataList;
 
-    BoardData boardData;
-    String url = "http://172.30.1.38:8081/test/Board.jsp";
     RequestQueue requestQueue;  // 서버와 통신할 통로
 
     @Override
@@ -76,11 +74,25 @@ public class BoardFragment extends Fragment {
                         Log.d("board",response);
 
                         try {
-
                             JSONObject jsonObj = new JSONObject(response);
+                            List<BoardData> boards = new ArrayList<>();
+
+                            for(int i = 0; i < 2; i++){
+
 
                             //response -> NewsData에 분류
-                            List<BoardData> boards = new ArrayList<>();
+
+
+                            BoardData boardData = new BoardData();
+                            boardData.setBoard_no(jsonObj.getString("board_no"));
+                            boardData.setBoard_subject(jsonObj.getString("board_title"));
+                            boardData.setBoard_content(jsonObj.getString("board_content"));
+
+                            boards.add(boardData);
+
+                            }
+
+                            adapter = new BoardAdapter(boards);
 
                             recyclerView.setAdapter(adapter);
 
