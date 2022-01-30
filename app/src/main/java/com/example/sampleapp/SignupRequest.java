@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class SignupRequest extends StringRequest {
 
-    // 서버 URL 설정 ( PHP 파일 연동 )
+    // 서버 URL 설정 (JSP)
     final static private String URL = "http://172.30.1.38:8081/test/Signup.jsp";
     private Map<String, String> map;
 
