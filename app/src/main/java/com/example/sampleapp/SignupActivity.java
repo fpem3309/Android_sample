@@ -44,6 +44,7 @@ public class SignupActivity extends AppCompatActivity {
 
                 String userEmail = TextInputEditText_email.getText().toString();
                 String userPassword = TextInputEditText_password.getText().toString();
+                String userPassword_chk = TextInputEditText_password_chk.getText().toString();
 
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
 
@@ -52,12 +53,17 @@ public class SignupActivity extends AppCompatActivity {
 
                         try {
 
-                            System.out.println("Response = " + response);
+                            if(userPassword != userPassword_chk){
+                                Toast.makeText(getApplicationContext(),"비번이 다릅니당.",Toast.LENGTH_SHORT).show();
+                            }else {
 
-                            Intent intent = new Intent(SignupActivity.this, MainActivity.class);
-                            startActivity(intent);
+                                System.out.println("Response = " + response);
 
-                            Toast.makeText(getApplicationContext(),"가입 성공하였습니다.",Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(SignupActivity.this, MainActivity.class);
+                                startActivity(intent);
+
+                                Toast.makeText(getApplicationContext(), "가입 성공하였습니다.", Toast.LENGTH_SHORT).show();
+                            }
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
