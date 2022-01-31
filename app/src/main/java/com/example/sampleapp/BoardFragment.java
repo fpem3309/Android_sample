@@ -65,7 +65,7 @@ public class BoardFragment extends Fragment {
 
     public void getBoard() {
 
-        String url = "http://172.30.1.38:8081/test/Board.jsp";
+        String url = "http://172.20.10.2:8081/test/Board.jsp";
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {

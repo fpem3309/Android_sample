@@ -54,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
                 String userEmail = TextInputEditText_email.getText().toString();
                 String userPassword = TextInputEditText_password.getText().toString();
 
+                Toast.makeText(getApplicationContext(),"로그인버튼 클릭",Toast.LENGTH_SHORT).show();
+
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
 
                     @Override
