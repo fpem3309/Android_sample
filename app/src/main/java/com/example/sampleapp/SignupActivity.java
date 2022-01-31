@@ -21,7 +21,8 @@ import org.json.JSONObject;
 public class SignupActivity extends AppCompatActivity {
 
     RelativeLayout RelativeLayout_Signup;
-    TextInputEditText TextInputEditText_email, TextInputEditText_password;
+    TextInputEditText TextInputEditText_email, TextInputEditText_password, TextInputEditText_password_chk,
+    TextInputEditText_name, TextInputEditText_birth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +32,9 @@ public class SignupActivity extends AppCompatActivity {
         TextInputEditText_email = findViewById(R.id.TextInputEditText_email);
         TextInputEditText_password = findViewById(R.id.TextInputEditText_password);
         RelativeLayout_Signup = findViewById(R.id.RelativeLayout_Signup);
-
+        TextInputEditText_password_chk = findViewById(R.id.TextInputEditText_password_chk);
+        TextInputEditText_name = findViewById(R.id.TextInputEditText_name);
+        TextInputEditText_birth = findViewById(R.id.TextInputEditText_birth);
 
         // Login 클릭 감지
         RelativeLayout_Signup.setClickable(true);
