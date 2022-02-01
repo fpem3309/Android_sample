@@ -65,7 +65,7 @@ public class BoardFragment extends Fragment {
 
     public void getBoard() {
 
-        String url = "http://172.20.10.2:8081/test/Board.jsp";
+        String url = "http://172.30.1.38:8081/test/Board.jsp";
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
@@ -74,22 +74,20 @@ public class BoardFragment extends Fragment {
                         Log.d("board",response);
 
                         try {
-                            JSONObject jsonObj = new JSONObject(response);
+                            JSONArray jsonArray = new JSONArray(response);
+
+                            //response -> BoardData 분류
                             List<BoardData> boards = new ArrayList<>();
 
-                            for(int i = 0; i < 2; i++){
+                            for(int i = 0; i<jsonArray.length(); i++){
+                                JSONObject obj = jsonArray.getJSONObject(i);
 
+                                BoardData boardData = new BoardData();
+                                boardData.setBoard_no(obj.getString("board_no"));
+                                boardData.setBoard_subject(obj.getString("board_title"));
+                                boardData.setBoard_content(obj.getString("board_content"));
 
-                            //response -> NewsData에 분류
-
-
-                            BoardData boardData = new BoardData();
-                            boardData.setBoard_no(jsonObj.getString("board_no"));
-                            boardData.setBoard_subject(jsonObj.getString("board_title"));
-                            boardData.setBoard_content(jsonObj.getString("board_content"));
-
-                            boards.add(boardData);
-
+                                boards.add(boardData);
                             }
 
                             adapter = new BoardAdapter(boards);

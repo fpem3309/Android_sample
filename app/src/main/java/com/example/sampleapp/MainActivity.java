@@ -54,8 +54,6 @@ public class MainActivity extends AppCompatActivity {
                 String userEmail = TextInputEditText_email.getText().toString();
                 String userPassword = TextInputEditText_password.getText().toString();
 
-                Toast.makeText(getApplicationContext(),"로그인버튼 클릭",Toast.LENGTH_SHORT).show();
-
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
 
                     @Override
@@ -63,8 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
                         try {
                             // TODO : 인코딩 문제때문에 한글 DB인 경우 로그인 불가
-
-                            System.out.println("aaa" + response);
+                            Log.d("login_response", response);
 
 //                            JSONObject jsonObject = new JSONObject(response);
 //                            boolean success = jsonObject.getBoolean("success");
@@ -86,12 +83,12 @@ public class MainActivity extends AppCompatActivity {
 //                                return;
 //                            }
 
-                            Toast.makeText(getApplicationContext(),"로그인에 성공하였습니다.",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "로그인에 성공하였습니다.", Toast.LENGTH_SHORT).show();
 
-                            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                            intent.putExtra("userEmail", userEmail);
-                            intent.putExtra("userPassword", userPassword);
-                            startActivity(intent);
+                                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                                intent.putExtra("userEmail", userEmail);
+                                intent.putExtra("userPassword", userPassword);
+                                startActivity(intent);
 
                         } catch (Exception e) {
                             e.printStackTrace();

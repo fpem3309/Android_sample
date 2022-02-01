@@ -60,7 +60,7 @@ public class NewsActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Log.d("News",response);
+                        Log.d("News_response",response);
 
                         try {
 

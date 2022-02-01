@@ -10,7 +10,7 @@ import java.util.Map;
 public class SignupRequest extends StringRequest {
 
     // 서버 URL 설정 (JSP)
-    final static private String URL = "http://172.20.10.2:8081/test/Signup.jsp";
+    final static private String URL = "http://172.30.1.38:8081/test/Signup.jsp";
     private Map<String, String> map;
 
 
