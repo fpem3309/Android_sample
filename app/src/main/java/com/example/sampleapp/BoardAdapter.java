@@ -1,9 +1,11 @@
 package com.example.sampleapp;
 
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -29,6 +31,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHol
         public TextView board_date;
         public RelativeLayout relativeLayout_expandable;
         public CardView cardView_content;
+        private Button btn_answer;
 
         public BoardViewHolder(View view) {
             super(view);
@@ -39,19 +42,32 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHol
             cardView_content = view.findViewById(R.id.cardView_content);
             board_hit = view.findViewById(R.id.board_hit);
             board_date = view.findViewById(R.id.board_date);
+            btn_answer = view.findViewById(R.id.btn_answer);
 
             relativeLayout_expandable = view.findViewById(R.id.relativeLayout_expandable);
 
             cardView_content.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(view.getContext(),"click",Toast.LENGTH_SHORT).show();
                     BoardData boardData = boardDataList.get(getBindingAdapterPosition());
                     boardData.setExpandable(!boardData.isExpandable());
-                    notifyItemChanged(getAbsoluteAdapterPosition());
+                    notifyItemChanged(getBindingAdapterPosition());
                     Log.d("pandable", String.valueOf(boardData.isExpandable()));
                 }
             });
+
+
+            btn_answer.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    BoardData boardData = boardDataList.get(getBindingAdapterPosition());
+                    Intent intent = new Intent(view.getContext(),AnswerActivity.class);
+                    intent.putExtra("userBoard_subject", boardData.getBoard_subject());
+                    intent.putExtra("userBoard_content", boardData.getBoard_content());
+                    view.getContext().startActivity(intent);
+                }
+            });
+
         }
 
     }
@@ -73,7 +89,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHol
         BoardData boardData = boardDataList.get(position);
         viewHolder.board_no.setText(boardData.getBoard_no());
         viewHolder.board_subject.setText(boardData.getBoard_subject());
-        viewHolder.board_content.setText(boardData.getBoard_content());
+        viewHolder.board_content.setText(boardData.getBoard_content().replaceAll("(\\\\n)", "\n"));
         viewHolder.board_date.setText(boardData.getBoard_date());
         viewHolder.board_hit.setText(boardData.getBoard_hit());
 

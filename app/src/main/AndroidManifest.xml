@@ -25,6 +25,7 @@
         <activity android:name=".NewsActivity" />
         <activity android:name=".ContentActivity" />
         <activity android:name=".SignupActivity"/>
+        <activity android:name=".AnswerActivity"/>
     </application>
 
 </manifest>

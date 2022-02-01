@@ -42,6 +42,7 @@
                     android:layout_height="wrap_content"
                     android:text="board_hit" />
 
+
                 <RelativeLayout
                     android:id="@+id/relativeLayout_expandable"
                     android:layout_width="match_parent"
@@ -53,6 +54,11 @@
                         android:layout_height="wrap_content"
                         android:text="board_content" />
                 </RelativeLayout>
+                <Button
+                    android:id="@+id/btn_answer"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="작성"/>
 
             </LinearLayout>
 
