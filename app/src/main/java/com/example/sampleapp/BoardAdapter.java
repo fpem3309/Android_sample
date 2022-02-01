@@ -46,12 +46,10 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHol
                 @Override
                 public void onClick(View view) {
                     Toast.makeText(view.getContext(),"click",Toast.LENGTH_SHORT).show();
-                    BoardData boardData = boardDataList.get(getAbsoluteAdapterPosition());
+                    BoardData boardData = boardDataList.get(getBindingAdapterPosition());
                     boardData.setExpandable(!boardData.isExpandable());
+                    notifyItemChanged(getAbsoluteAdapterPosition());
                     Log.d("pandable", String.valueOf(boardData.isExpandable()));
-                    if(boardData.isExpandable()==true){
-                        relativeLayout_expandable.setVisibility(View.VISIBLE);
-                    }
                 }
             });
         }
