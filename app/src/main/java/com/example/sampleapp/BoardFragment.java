@@ -86,6 +86,8 @@ public class BoardFragment extends Fragment {
                                 boardData.setBoard_no(obj.getString("board_no"));
                                 boardData.setBoard_subject(obj.getString("board_title"));
                                 boardData.setBoard_content(obj.getString("board_content"));
+                                boardData.setBoard_date(obj.getString("board_date"));
+                                boardData.setBoard_hit(obj.getString("board_hit"));
 
                                 boards.add(boardData);
                             }
