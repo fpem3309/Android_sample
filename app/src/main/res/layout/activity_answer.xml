@@ -5,18 +5,13 @@
     android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/newb_content"
-
-        android:layout_width="0dp"
+        android:id="@+id/userBoard_content"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-
         android:gravity="top|left"
-
         android:hint="내용을 입력하셈"
         android:inputType="textMultiLine"
-        android:lines="5"
-        android:maxWidth="5.0dip"
-        android:minWidth="10.0dip"
+        android:lines="15"
         android:paddingLeft="10dp"
         android:paddingTop="10dp"
         android:scrollHorizontally="false"
@@ -56,12 +51,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
-    <EditText
-        android:id="@+id/userBoard_content"
+    <TextView
+        android:id="@+id/userBoard_Ndate"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:ems="10"
-        android:hint="작성자"
+        android:hint="n번째 질문"
         android:inputType="textPersonName"
         android:paddingLeft="10dp"
         android:textColor="#000000"
@@ -98,12 +93,23 @@
         style="@android:style/Widget.DeviceDefault.ImageButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginEnd="10dp"
+        android:background="#00ff0000"
+        app:layout_constraintBottom_toTopOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.64"
+        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+
+    <ImageButton
+        android:id="@+id/btn_add"
+        style="@android:style/Widget.DeviceDefault.ImageButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:background="#00ff0000"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.64"
-        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+        app:srcCompat="?android:attr/textCheckMark" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
