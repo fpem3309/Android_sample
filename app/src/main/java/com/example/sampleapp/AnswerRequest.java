@@ -14,11 +14,12 @@ public class AnswerRequest extends StringRequest {
     private Map<String, String> map;
 
 
-    public AnswerRequest(String add_content, Response.Listener<String> listener) {
+    public AnswerRequest(String add_content, String board_no, Response.Listener<String> listener) {
         super(Request.Method.POST, URL, listener, null);
 
         map = new HashMap<>();
         map.put("add_content",add_content);
+        map.put("board_no",board_no);
     }
 
     @Override

@@ -62,6 +62,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHol
                 public void onClick(View view) {
                     BoardData boardData = boardDataList.get(getBindingAdapterPosition());
                     Intent intent = new Intent(view.getContext(),AnswerActivity.class);
+                    intent.putExtra("userBoard_no", boardData.getBoard_no());
                     intent.putExtra("userBoard_subject", boardData.getBoard_subject());
                     intent.putExtra("userBoard_content", boardData.getBoard_content());
                     view.getContext().startActivity(intent);
