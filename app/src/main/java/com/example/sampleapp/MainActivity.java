@@ -61,7 +61,21 @@ public class MainActivity extends AppCompatActivity {
 
                         try {
                             // TODO : 인코딩 문제때문에 한글 DB인 경우 로그인 불가
-                            Log.d("login_response", response);
+                            Log.d("login_response",response);
+                            String res = response;
+                            String res2 = "success";
+                            Log.d("login_response2", String.valueOf(res.equals(res2)));
+                            if(response.equals("success")){
+                                Toast.makeText(getApplicationContext(), "로그인에 성공하였습니다.", Toast.LENGTH_SHORT).show();
+
+                                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                                intent.putExtra("userEmail", userEmail);
+                                intent.putExtra("userPassword", userPassword);
+                                startActivity(intent);
+                            }else{
+                                Toast.makeText(getApplicationContext(), "로그인에 실패.", Toast.LENGTH_SHORT).show();
+                                return;
+                            }
 
 //                            JSONObject jsonObject = new JSONObject(response);
 //                            boolean success = jsonObject.getBoolean("success");
@@ -83,12 +97,6 @@ public class MainActivity extends AppCompatActivity {
 //                                return;
 //                            }
 
-                                Toast.makeText(getApplicationContext(), "로그인에 성공하였습니다.", Toast.LENGTH_SHORT).show();
-
-                                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                                intent.putExtra("userEmail", userEmail);
-                                intent.putExtra("userPassword", userPassword);
-                                startActivity(intent);
 
                         } catch (Exception e) {
                             e.printStackTrace();
