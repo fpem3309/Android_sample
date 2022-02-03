@@ -36,6 +36,8 @@ public class SignupActivity extends AppCompatActivity {
         TextInputEditText_name = findViewById(R.id.TextInputEditText_name);
         TextInputEditText_birth = findViewById(R.id.TextInputEditText_birth);
 
+
+
         // Login 클릭 감지
         RelativeLayout_Signup.setClickable(true);
         RelativeLayout_Signup.setOnClickListener(new View.OnClickListener() {
@@ -53,25 +55,26 @@ public class SignupActivity extends AppCompatActivity {
 
                         try {
 
-                            if(userPassword != userPassword_chk){
-                                Toast.makeText(getApplicationContext(),"비번이 다릅니당.",Toast.LENGTH_SHORT).show();
-                            }else {
-
+                            if(userPassword.equals(userPassword_chk)){
                                 System.out.println("Response = " + response);
 
                                 Intent intent = new Intent(SignupActivity.this, MainActivity.class);
                                 startActivity(intent);
 
                                 Toast.makeText(getApplicationContext(), "가입 성공하였습니다.", Toast.LENGTH_SHORT).show();
+
+                            }else {
+                                Toast.makeText(getApplicationContext(),"비번이 다릅니당.",Toast.LENGTH_SHORT).show();
+                                return;
                             }
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
                     }
                 };
-                SignupRequest signupRequest = new SignupRequest(userEmail, userPassword, responseListener);
-                RequestQueue queue = Volley.newRequestQueue(SignupActivity.this);
-                queue.add(signupRequest);
+                    SignupRequest signupRequest = new SignupRequest(userEmail, userPassword, responseListener);
+                    RequestQueue queue = Volley.newRequestQueue(SignupActivity.this);
+                    queue.add(signupRequest);
             }
         });
 

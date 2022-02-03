@@ -17,6 +17,7 @@ import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.textfield.TextInputEditText;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -62,10 +63,15 @@ public class MainActivity extends AppCompatActivity {
                         try {
                             // TODO : 인코딩 문제때문에 한글 DB인 경우 로그인 불가
                             Log.d("login_response",response);
-                            String res = response;
-                            String res2 = "success";
-                            Log.d("login_response2", String.valueOf(res.equals(res2)));
-                            if(response.equals("success")){
+                            // String으로 그냥 못 보냄으로 JSON Object 형태로 변형하여 전송
+                            // 서버 통신하여 회원가입 성공 여부를 jsonResponse로 받음
+
+                            JSONArray jsonArray = new JSONArray(response);
+                            Log.d("login_response2", String.valueOf(jsonArray));
+                            JSONObject obj = jsonArray.getJSONObject(0);
+                            Log.d("login_response3", obj.getString("success"));
+
+                            if(obj.getString("success").equals("true")){
                                 Toast.makeText(getApplicationContext(), "로그인에 성공하였습니다.", Toast.LENGTH_SHORT).show();
 
                                 Intent intent = new Intent(MainActivity.this, LoginActivity.class);
