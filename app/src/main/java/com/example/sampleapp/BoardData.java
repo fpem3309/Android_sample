@@ -8,6 +8,7 @@ public class BoardData implements Serializable {
     private String board_content;
     private String board_hit;
     private String board_date;
+    private String user_email;
     private boolean expandable;
 
     public BoardData() {
@@ -39,6 +40,13 @@ public class BoardData implements Serializable {
         this.expandable = expandable;
     }
 
+
+    public String getUser_email() {
+        return user_email;
+    }
+    public void setUser_email(String user_email) {
+        this.user_email = user_email;
+    }
 
 
     public String getBoard_no() {

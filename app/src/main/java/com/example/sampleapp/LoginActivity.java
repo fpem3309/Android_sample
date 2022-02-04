@@ -28,6 +28,17 @@ public class LoginActivity extends AppCompatActivity {
 
         nv = findViewById(R.id.bottomNavigationView);
 
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+
+        String userEmail = bundle.getString("userEmail");
+        String userPassword = bundle.getString("userPassword");
+
+
+        bundle.putString("email",userEmail);
+        bundle.putString("password",userPassword);
+        fragment_user.setArguments(bundle);
+
         nv.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -40,20 +51,13 @@ public class LoginActivity extends AppCompatActivity {
 
                     case R.id.board_tab:
                         getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,fragment_board).commit();
+                        bundle.putString("email",userEmail);
+                        fragment_board.setArguments(bundle);
                         break;
                 }
                 return false;
             }
         });
-
-        Intent intent = getIntent();
-        Bundle bundle = intent.getExtras();
-        String userEmail = bundle.getString("userEmail");
-        String userPassword = bundle.getString("userPassword");
-
-        bundle.putString("email",userEmail);
-        bundle.putString("password",userPassword);
-        fragment_user.setArguments(bundle);
 
         //받아온 user 정보
 //        Intent intent = getIntent();

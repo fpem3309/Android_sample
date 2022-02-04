@@ -22,6 +22,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHol
     RequestQueue requestQueue;  // 서버와 통신할 통로
     private List<BoardData> boardDataList;
 
+
     public class BoardViewHolder extends RecyclerView.ViewHolder {
 
         public TextView board_no;
@@ -43,6 +44,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHol
             board_hit = view.findViewById(R.id.board_hit);
             board_date = view.findViewById(R.id.board_date);
             btn_answer = view.findViewById(R.id.btn_answer);
+
 
             relativeLayout_expandable = view.findViewById(R.id.relativeLayout_expandable);
 
@@ -92,7 +94,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHol
         viewHolder.board_subject.setText(boardData.getBoard_subject());
         viewHolder.board_content.setText(boardData.getBoard_content().replaceAll("(\\\\n)", "\n"));
         viewHolder.board_date.setText(boardData.getBoard_date());
-        viewHolder.board_hit.setText(boardData.getBoard_hit());
+        viewHolder.board_hit.setText(boardData.getUser_email());
 
         boolean isExpandable = boardDataList.get(position).isExpandable();
         viewHolder.relativeLayout_expandable.setVisibility(isExpandable ? View.VISIBLE : View.GONE);

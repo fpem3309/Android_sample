@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -39,6 +40,8 @@ public class BoardFragment extends Fragment {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
+    private TextView user_Email;
+    private Button new_answer;
 
     RequestQueue requestQueue;  // 서버와 통신할 통로
 
@@ -50,17 +53,25 @@ public class BoardFragment extends Fragment {
 
         recyclerView = view.findViewById(R.id.recyclerview);
 
-
         //리사이클러뷰의 레이아웃 매니저 설정
         layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
 
         requestQueue = Volley.newRequestQueue(getContext());
+        user_Email = view.findViewById(R.id.user_Email);
+        new_answer = view.findViewById(R.id.new_answer);
 
-        getBoard();
-
+        //getBoard();
+        goBoard2();
+        new_answer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(), "새로운 질문 insert", Toast.LENGTH_SHORT).show();
+            }
+        });
         return view;
         }
+
 
     public void getBoard() {
 
@@ -87,6 +98,7 @@ public class BoardFragment extends Fragment {
                                 boardData.setBoard_content(obj.getString("board_content"));
                                 boardData.setBoard_date(obj.getString("board_date"));
                                 boardData.setBoard_hit(obj.getString("board_hit"));
+                                boardData.setUser_email(obj.getString("userEmail"));
 
                                 boards.add(boardData);
                             }
@@ -118,5 +130,51 @@ public class BoardFragment extends Fragment {
         // Add the request to the RequestQueue.
         requestQueue.add(stringRequest);
 
+
+    }
+    public void goBoard2(){
+        Bundle extras = getArguments();
+        user_Email.setText(extras.getString("email"));
+
+        String userEmail = user_Email.getText().toString();
+
+        Response.Listener<String> responseListener = new Response.Listener<String>() {
+        @Override
+        public void onResponse(String response) {
+            try{
+                Log.d("user_res",response);
+
+                JSONArray jsonArray = new JSONArray(response);
+
+                //response -> BoardData 분류
+                List<BoardData> boards = new ArrayList<>();
+
+                for(int i = 0; i<jsonArray.length(); i++){
+                    JSONObject obj = jsonArray.getJSONObject(i);
+
+                    BoardData boardData = new BoardData();
+                    boardData.setBoard_no(obj.getString("board_no"));
+                    boardData.setBoard_subject(obj.getString("board_title"));
+                    boardData.setBoard_content(obj.getString("board_content"));
+                    boardData.setBoard_date(obj.getString("board_date"));
+                    boardData.setBoard_hit(obj.getString("board_hit"));
+                    boardData.setUser_email(obj.getString("userEmail"));
+
+                    boards.add(boardData);
+                }
+
+                adapter = new BoardAdapter(boards);
+
+                recyclerView.setAdapter(adapter);
+
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+
+    };
+
+        BoardRequest boardRequest = new BoardRequest(userEmail, responseListener);
+        requestQueue.add(boardRequest);
     }
     }

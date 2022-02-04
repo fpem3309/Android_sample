@@ -54,9 +54,8 @@ public class SignupActivity extends AppCompatActivity {
                     public void onResponse(String response) {
 
                         try {
-
-                            if(userPassword.equals(userPassword_chk)){
-                                System.out.println("Response = " + response);
+                            Log.d("Response",response);
+                            if(userPassword.equals(userPassword_chk) && response.equals(1)){
 
                                 Intent intent = new Intent(SignupActivity.this, MainActivity.class);
                                 startActivity(intent);
