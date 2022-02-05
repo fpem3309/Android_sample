@@ -43,7 +43,7 @@ public class BoardFragment extends Fragment {
     private TextView user_Email;
     private Button new_answer;
 
-    RequestQueue requestQueue;  // 서버와 통신할 통로
+    RequestQueue requestQueue;  // 서버와 통신할 통로 req
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
