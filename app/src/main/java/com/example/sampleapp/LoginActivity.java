@@ -15,6 +15,7 @@ public class LoginActivity extends AppCompatActivity {
     BottomNavigationView nv;
     UserFragment fragment_user;
     BoardFragment fragment_board;
+    SetFragment fragment_set;
 
 
     @Override
@@ -24,6 +25,7 @@ public class LoginActivity extends AppCompatActivity {
 
         fragment_user = new UserFragment();
         fragment_board = new BoardFragment();
+        fragment_set = new SetFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,fragment_user).commit();
 
         nv = findViewById(R.id.bottomNavigationView);
@@ -53,6 +55,9 @@ public class LoginActivity extends AppCompatActivity {
                         getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,fragment_board).commit();
                         bundle.putString("email",userEmail);
                         fragment_board.setArguments(bundle);
+                        break;
+                    case R.id.set_tab:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,fragment_set).commit();
                         break;
                 }
                 return false;

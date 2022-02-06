@@ -4,12 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -27,18 +30,11 @@ public class AnswerActivity extends AppCompatActivity {
     TextView userBoard_Ndate;
 
 
-    SimpleDateFormat mFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_answer);
-
-        long now = System.currentTimeMillis();
-        Date mDate = new Date(now);
-        SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-        String getTime = simpleDate.format(mDate);
 
         btn_add = findViewById(R.id.btn_add);
         btn_del = findViewById(R.id.btn_del);
@@ -56,7 +52,8 @@ public class AnswerActivity extends AppCompatActivity {
         userBoard_no.setText(no);
         userBoard_subject.setText(subject);
         userBoard_content.setText(content);
-        userBoard_Ndate.setText("n번째 질문"+getTime);
+
+
 
 
         btn_add.setOnClickListener(new View.OnClickListener() {

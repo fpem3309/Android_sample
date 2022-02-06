@@ -41,7 +41,6 @@ public class BoardFragment extends Fragment {
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     private TextView user_Email;
-    private Button new_answer;
 
     RequestQueue requestQueue;  // 서버와 통신할 통로 req
 
@@ -59,80 +58,15 @@ public class BoardFragment extends Fragment {
 
         requestQueue = Volley.newRequestQueue(getContext());
         user_Email = view.findViewById(R.id.user_Email);
-        new_answer = view.findViewById(R.id.new_answer);
 
-        //getBoard();
-        goBoard2();
-        new_answer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getContext(), "새로운 질문 insert", Toast.LENGTH_SHORT).show();
-            }
-        });
+        getBoard();
         return view;
         }
 
 
-    public void getBoard() {
-
-        String url = "http://172.30.1.38:8081/test/Board.jsp";
-
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        Log.d("board",response);
-
-                        try {
-                            JSONArray jsonArray = new JSONArray(response);
-
-                            //response -> BoardData 분류
-                            List<BoardData> boards = new ArrayList<>();
-
-                            for(int i = 0; i<jsonArray.length(); i++){
-                                JSONObject obj = jsonArray.getJSONObject(i);
-
-                                BoardData boardData = new BoardData();
-                                boardData.setBoard_no(obj.getString("board_no"));
-                                boardData.setBoard_subject(obj.getString("board_title"));
-                                boardData.setBoard_content(obj.getString("board_content"));
-                                boardData.setBoard_date(obj.getString("board_date"));
-                                boardData.setBoard_hit(obj.getString("board_hit"));
-                                boardData.setUser_email(obj.getString("userEmail"));
-
-                                boards.add(boardData);
-                            }
-
-                            adapter = new BoardAdapter(boards);
-
-                            recyclerView.setAdapter(adapter);
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.d("error","error!!!!!!!");
-            }
-        }){
-            @Override
-            public Map getHeaders() throws AuthFailureError{
-                Map params = new HashMap();
-                params.put("User-Agent", "Mozilla/5.0");
-
-                return params;
-            }
-        };
+    public void getBoard(){
 
 
-        // Add the request to the RequestQueue.
-        requestQueue.add(stringRequest);
-
-
-    }
-    public void goBoard2(){
         Bundle extras = getArguments();
         user_Email.setText(extras.getString("email"));
 
@@ -141,6 +75,7 @@ public class BoardFragment extends Fragment {
         Response.Listener<String> responseListener = new Response.Listener<String>() {
         @Override
         public void onResponse(String response) {
+
             try{
                 Log.d("user_res",response);
 
@@ -164,17 +99,19 @@ public class BoardFragment extends Fragment {
                 }
 
                 adapter = new BoardAdapter(boards);
-
                 recyclerView.setAdapter(adapter);
 
             }catch (Exception e){
                 e.printStackTrace();
             }
+
         }
 
     };
 
         BoardRequest boardRequest = new BoardRequest(userEmail, responseListener);
+        requestQueue = Volley.newRequestQueue(getActivity());
         requestQueue.add(boardRequest);
     }
+
     }

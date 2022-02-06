@@ -19,9 +19,8 @@ import com.android.volley.RequestQueue;
 import java.util.List;
 
 public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHolder> {
-    RequestQueue requestQueue;  // 서버와 통신할 통로
-    private List<BoardData> boardDataList;
 
+    private List<BoardData> boardDataList;
 
     public class BoardViewHolder extends RecyclerView.ViewHolder {
 
@@ -70,7 +69,6 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHol
                     view.getContext().startActivity(intent);
                 }
             });
-
         }
 
     }
@@ -98,7 +96,6 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHol
 
         boolean isExpandable = boardDataList.get(position).isExpandable();
         viewHolder.relativeLayout_expandable.setVisibility(isExpandable ? View.VISIBLE : View.GONE);
-
     }
 
     @Override
