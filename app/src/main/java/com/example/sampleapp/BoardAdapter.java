@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -27,11 +28,10 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHol
         public TextView board_no;
         public TextView board_subject;
         public TextView board_content;
-        public TextView board_hit;
         public TextView board_date;
         public RelativeLayout relativeLayout_expandable;
         public CardView cardView_content;
-        private Button btn_answer;
+        private ImageButton btn_answer;
 
         public BoardViewHolder(View view) {
             super(view);
@@ -40,7 +40,6 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHol
             board_subject = view.findViewById(R.id.board_subject);
             board_content = view.findViewById(R.id.board_content);
             cardView_content = view.findViewById(R.id.cardView_content);
-            board_hit = view.findViewById(R.id.board_hit);
             board_date = view.findViewById(R.id.board_date);
             btn_answer = view.findViewById(R.id.btn_answer);
 
@@ -88,11 +87,10 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHol
     public void onBindViewHolder(BoardViewHolder viewHolder, int position) {
 
         BoardData boardData = boardDataList.get(position);
-        viewHolder.board_no.setText(boardData.getBoard_no());
+        viewHolder.board_no.setText("#"+boardData.getBoard_no());
         viewHolder.board_subject.setText(boardData.getBoard_subject());
         viewHolder.board_content.setText(boardData.getBoard_content().replaceAll("(\\\\n)", "\n"));
         viewHolder.board_date.setText(boardData.getBoard_date());
-        viewHolder.board_hit.setText(boardData.getUser_email());
 
         boolean isExpandable = boardDataList.get(position).isExpandable();
         viewHolder.relativeLayout_expandable.setVisibility(isExpandable ? View.VISIBLE : View.GONE);

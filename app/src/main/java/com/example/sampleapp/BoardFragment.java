@@ -59,10 +59,14 @@ public class BoardFragment extends Fragment {
         requestQueue = Volley.newRequestQueue(getContext());
         user_Email = view.findViewById(R.id.user_Email);
 
-        getBoard();
         return view;
         }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        getBoard();
+    }
 
     public void getBoard(){
 
@@ -92,7 +96,6 @@ public class BoardFragment extends Fragment {
                     boardData.setBoard_subject(obj.getString("board_title"));
                     boardData.setBoard_content(obj.getString("board_content"));
                     boardData.setBoard_date(obj.getString("board_date"));
-                    boardData.setBoard_hit(obj.getString("board_hit"));
                     boardData.setUser_email(obj.getString("userEmail"));
 
                     boards.add(boardData);

@@ -7,33 +7,21 @@
     android:paddingRight="12dp"
     android:paddingTop="12dp">
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="뒤로가기"
-        android:id="@+id/go_main"/>
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:textSize="25sp"
-        android:layout_marginBottom="16dp"
-        android:text="LOGIN"/>
+        android:textSize="40sp"
+        android:text="LOGIN"
+        android:layout_marginTop="40dp"/>
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@null"
-        android:src="@drawable/sample"
-        android:layout_marginBottom="16dp"
-        />
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp">
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="60dp">
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -45,12 +33,13 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp">
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="30dp">
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:hint="Password"
-            android:id="@+id/TextInputEditText_password"/>
+            android:id="@+id/TextInputEditText_password" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <RelativeLayout
@@ -61,6 +50,7 @@
         android:background="@drawable/btn_blue"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
+        android:layout_marginTop="50dp"
         android:weightSum="1">
 
         <TextView
@@ -75,21 +65,17 @@
 
     </RelativeLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Or"
-        android:gravity="center"/>
 
     <RelativeLayout
-        android:id="@+id/RelativeLayout_password"
+        android:id="@+id/RelativeLayout_signup"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:orientation="horizontal"
         android:background="@drawable/btn_darkblue"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
-        android:weightSum="1">
+        android:weightSum="1"
+        android:layout_marginTop="20dp">
 
         <TextView
             android:layout_width="match_parent"
@@ -97,15 +83,17 @@
             android:layout_weight="1"
             android:gravity="center"
             android:stateListAnimator="@null"
-            android:text="Login with Google"
+            android:text="Signup"
             android:textColor="@color/white" />
 
     </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:weightSum="2">
+        android:weightSum="2"
+        android:layout_marginTop="30dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -115,11 +103,11 @@
             android:textSize="20sp"
             android:layout_weight="1"/>
 
-        <Button
+        <TextView
             android:id="@+id/btn_signup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sign Up"
+            android:text="Login with Kakao"
             android:gravity="center"
             android:textColor="@android:color/holo_blue_dark"
             android:textSize="20sp"

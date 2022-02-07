@@ -23,7 +23,7 @@ import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
 
-    RelativeLayout RelativeLayout_login;
+    RelativeLayout RelativeLayout_login, RelativeLayout_signup;
     TextInputEditText TextInputEditText_email, TextInputEditText_password;
     Button btn_signup;
 
@@ -35,9 +35,10 @@ public class MainActivity extends AppCompatActivity {
         TextInputEditText_email = findViewById(R.id.TextInputEditText_email);
         TextInputEditText_password = findViewById(R.id.TextInputEditText_password);
         RelativeLayout_login = findViewById(R.id.RelativeLayout_login);
-        btn_signup = findViewById(R.id.btn_signup);
+        RelativeLayout_signup = findViewById(R.id.RelativeLayout_signup);
 
-        btn_signup.setOnClickListener(new View.OnClickListener() {
+
+        RelativeLayout_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this,SignupActivity.class);

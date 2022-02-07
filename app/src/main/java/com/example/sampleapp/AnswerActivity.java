@@ -27,7 +27,7 @@ public class AnswerActivity extends AppCompatActivity {
     TextView userBoard_no;
     TextView userBoard_subject;
     EditText userBoard_content;
-    TextView userBoard_Ndate;
+    TextView userBoard_answerNo;
 
 
 
@@ -41,7 +41,7 @@ public class AnswerActivity extends AppCompatActivity {
         userBoard_no = findViewById(R.id.userBoard_no);
         userBoard_subject = findViewById(R.id.userBoard_subject);
         userBoard_content = findViewById(R.id.userBoard_content);
-        userBoard_Ndate = findViewById(R.id.userBoard_Ndate);
+        userBoard_answerNo = findViewById(R.id.userBoard_answerNo);
 
         Intent intent = getIntent();
         String no = intent.getStringExtra("userBoard_no");
@@ -52,6 +52,7 @@ public class AnswerActivity extends AppCompatActivity {
         userBoard_no.setText(no);
         userBoard_subject.setText(subject);
         userBoard_content.setText(content);
+        userBoard_answerNo.setText(no+"번째 질문");
 
 
 
@@ -69,7 +70,7 @@ public class AnswerActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         try {
                                 Log.d("response_content = " ,response);
-                                finish();
+                                finish();// BoardFragment의 onResume()함수가 호출, 데이터 새로고침
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
