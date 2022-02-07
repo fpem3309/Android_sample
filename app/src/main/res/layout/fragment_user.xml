@@ -43,6 +43,70 @@
                 app:layout_constraintStart_toEndOf="@+id/tv_email"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_margin="20dp"
+                android:background="#D8BD6B"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+                <TextView
+                    android:id="@+id/tv_mood"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.dinuscxj.progressbar.CircleProgressBar
+                    android:id="@+id/mood_circle"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:progress_end_color="#0041C3"
+                    app:progress_start_color="#9EFFEC"
+                    app:progress_stroke_cap="round"
+                    app:progress_stroke_width="30dp "
+                    app:progress_text_color="#4363FF"
+                    app:progress_text_size="20sp"
+                    app:style="solid_line" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_margin="20dp"
+                android:background="#D8BD6B"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+                <com.dinuscxj.progressbar.CircleProgressBar
+                    android:id="@+id/answer_circle"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:progress_end_color="#0041C3"
+                    app:progress_start_color="#9EFFEC"
+                    app:progress_stroke_cap="round"
+                    app:progress_stroke_width="30dp"
+                    app:progress_text_color="#4363FF"
+                    app:progress_text_size="20sp"
+                    app:style="solid_line"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
             <Button
                 android:id="@+id/btn_news"
                 android:layout_width="wrap_content"
@@ -52,20 +116,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <RelativeLayout
-                android:id="@+id/recent_answer"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:background="#DFDCBC"
-                android:orientation="horizontal"
-                android:paddingLeft="12dp"
-                android:paddingRight="12dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tv_email">
 
-            </RelativeLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </FrameLayout>
