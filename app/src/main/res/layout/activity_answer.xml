@@ -9,13 +9,11 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:gravity="top|left"
-        android:hint="내용을 입력하셈"
+        android:padding="25dp"
+        android:hint="답변을 해보세요"
         android:inputType="textMultiLine"
         android:lines="15"
-        android:paddingLeft="10dp"
-        android:paddingTop="10dp"
         android:scrollHorizontally="false"
-        android:textColor="#000000"
         android:textColorHint="#958C8C"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,35 +42,34 @@
         android:visibility="gone"/>
 
     <TextView
-        android:id="@+id/userBoard_subject"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:ems="10"
-        android:hint="제목"
-        android:inputType="textPersonName"
-        android:paddingLeft="10dp"
-        android:textColor="#000000"
-        android:textColorHint="#958C8C"
-        android:textColorLink="#ff80cbc4"
-        app:layout_constraintBottom_toTopOf="@+id/guideline4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline3" />
-
-    <TextView
         android:id="@+id/userBoard_answerNo"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:ems="10"
+        android:hint="n번째 질문"
         android:inputType="textPersonName"
-        android:paddingLeft="10dp"
-        android:textColor="#000000"
-        android:textColorHint="#958C8C"
-        android:textColorLink="#ff80cbc4"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline3"
+        app:layout_constraintVertical_bias="0.0"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/userBoard_subject"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:hint="제목"
+        android:inputType="textPersonName"
+        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline7"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline4" />
+        app:layout_constraintTop_toTopOf="@+id/guideline4"
+        app:layout_constraintVertical_bias="0.0"
+        android:gravity="center"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"

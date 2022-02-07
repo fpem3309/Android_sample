@@ -8,6 +8,7 @@
     tools:context=".MainActivity"
     tools:menu="@menu/activity_menu">
 
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="0dp"
