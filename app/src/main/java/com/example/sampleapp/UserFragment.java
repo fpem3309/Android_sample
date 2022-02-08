@@ -32,7 +32,7 @@ public class UserFragment extends Fragment {
 
     TextView tv_email,tv_password,tv_mood;
     Button btn_news;
-    CircleProgressBar mood_circle, answer_circle;
+    CircleProgressBar answer_circle, good_circle, soso_circle, bad_circle;
 
     @Nullable
     @Override
@@ -43,7 +43,10 @@ public class UserFragment extends Fragment {
         tv_password = view.findViewById(R.id.tv_password);
         btn_news = view.findViewById(R.id.btn_news);
 
-        mood_circle = view.findViewById(R.id.mood_circle);
+        good_circle = view.findViewById(R.id.good_circle);
+        soso_circle = view.findViewById(R.id.soso_circle);
+        bad_circle = view.findViewById(R.id.bad_circle);
+
         tv_mood = view.findViewById(R.id.tv_mood);
 
         answer_circle = view.findViewById(R.id.answer_circle);
@@ -63,18 +66,10 @@ public class UserFragment extends Fragment {
             }
         });
 
-        Mood_Circle();
-        Answer_circle();
         get_moodCnt();
+        Answer_circle();
+
         return view;
-    }
-
-    public void Mood_Circle(){
-        int allAnswer = 100;
-        int goodMood = 10;
-        int per = (goodMood*100)/allAnswer;
-
-        mood_circle.setProgress(per);
     }
 
     public void Answer_circle(){
@@ -91,11 +86,47 @@ public class UserFragment extends Fragment {
             @Override
             public void onResponse(String response) {
 
-                try{
-                    Log.d("mood",response);
+                int good_cnt = 0;
+                int soso_cnt = 0;
+                int bad_cnt = 0;
+
+                try {
+                    Log.d("mood", response);
+
                     JSONArray jsonArray = new JSONArray(response);
-                    JSONObject obj = jsonArray.getJSONObject(0);
-                    tv_mood.setText(obj.getString("userMood"));
+
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject obj = jsonArray.getJSONObject(i);
+                        Log.d("mood_obj", String.valueOf(obj));
+
+                        if (obj.getString("userMood").equals("0")) {
+                            bad_cnt = bad_cnt+1;
+                        }
+                        if (obj.getString("userMood").equals("1")) {
+                            soso_cnt = soso_cnt+1;
+                        }
+                        if (obj.getString("userMood").equals("2")) {
+                            good_cnt = good_cnt+1;
+                        }
+                }
+                    Log.d("bad_cnt", String.valueOf(bad_cnt));
+                    Log.d("soso_cnt", String.valueOf(soso_cnt));
+                    Log.d("good_cnt", String.valueOf(good_cnt));
+                    tv_mood.setText(String.valueOf(jsonArray.length()));
+
+                    Log.d("mood_cnt", String.valueOf(jsonArray.length())); // 총 개수
+
+                    // Mood별 퍼센트 구하기
+                    int allAnswer = jsonArray.length();
+
+                    int good_per = (good_cnt*100)/allAnswer;
+                    good_circle.setProgress(good_per);
+
+                    int soso_per = (soso_cnt*100)/allAnswer;
+                    soso_circle.setProgress(soso_per);
+
+                    int bad_per = (bad_cnt*100)/allAnswer;
+                    bad_circle.setProgress(bad_per);
 
                 }catch (Exception e){
                     e.printStackTrace();

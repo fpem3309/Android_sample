@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Adapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +29,8 @@ public class AnswerActivity extends AppCompatActivity {
     TextView userBoard_subject;
     EditText userBoard_content;
     TextView userBoard_answerNo;
+    RadioGroup Rad_mood;
+    TextView rad_result;
 
 
 
@@ -43,6 +46,9 @@ public class AnswerActivity extends AppCompatActivity {
         userBoard_content = findViewById(R.id.userBoard_content);
         userBoard_answerNo = findViewById(R.id.userBoard_answerNo);
 
+        Rad_mood = findViewById(R.id.Rad_mood);
+        rad_result = findViewById(R.id.rad_result);
+
         Intent intent = getIntent();
         String no = intent.getStringExtra("userBoard_no");
         String subject = intent.getStringExtra("userBoard_subject");
@@ -54,14 +60,29 @@ public class AnswerActivity extends AppCompatActivity {
         userBoard_content.setText(content);
         userBoard_answerNo.setText(no+"번째 질문");
 
-
-
+        Rad_mood.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                switch (i){
+                    case R.id.rad_good:
+                        rad_result.setText("2");
+                        break;
+                    case R.id.rad_soso:
+                        rad_result.setText("1");
+                        break;
+                    case R.id.rad_bad:
+                        rad_result.setText("0");
+                        break;
+                }
+            }
+        });
 
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String add_content = userBoard_content.getText().toString();
                 String board_no = userBoard_no.getText().toString();
+                String add_mood = rad_result.getText().toString();
                 Log.d("수정content",add_content+board_no);
 
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
@@ -76,7 +97,7 @@ public class AnswerActivity extends AppCompatActivity {
                         }
                     }
                 };
-                AnswerRequest answerRequest = new AnswerRequest(add_content, board_no, responseListener);
+                AnswerRequest answerRequest = new AnswerRequest(add_content, board_no, add_mood, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(AnswerActivity.this);
                 queue.add(answerRequest);
             }

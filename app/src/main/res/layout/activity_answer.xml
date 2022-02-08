@@ -9,16 +9,16 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:gravity="top|left"
-        android:padding="25dp"
         android:hint="답변을 해보세요"
         android:inputType="textMultiLine"
         android:lines="15"
+        android:padding="25dp"
         android:scrollHorizontally="false"
         android:textColorHint="#958C8C"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline7" />
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
     <TextView
         android:layout_width="0dp"
@@ -83,7 +83,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.2" />
+        app:layout_constraintGuide_percent="0.20109439" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline7"
@@ -91,6 +91,50 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.3" />
+
+    <RadioGroup
+        android:id="@+id/Rad_mood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/userBoard_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userBoard_subject">
+
+        <RadioButton
+            android:id="@+id/rad_good"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="good"/>
+
+        <RadioButton
+            android:id="@+id/rad_soso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="soso"/>
+
+        <RadioButton
+            android:id="@+id/rad_bad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="bad"/>
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/rad_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="result"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline7" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.4" />
 
     <ImageButton
         android:id="@+id/btn_del"
