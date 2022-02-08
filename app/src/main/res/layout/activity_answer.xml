@@ -105,19 +105,19 @@
             android:id="@+id/rad_good"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="good"/>
+            android:text="🥰"/>
 
         <RadioButton
             android:id="@+id/rad_soso"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="soso"/>
+            android:text="🙂"/>
 
         <RadioButton
             android:id="@+id/rad_bad"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="bad"/>
+            android:text="🥵"/>
     </RadioGroup>
 
     <TextView
@@ -127,7 +127,8 @@
         android:text="result"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline7" />
+        app:layout_constraintTop_toTopOf="@+id/guideline7"
+        android:visibility="gone"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
