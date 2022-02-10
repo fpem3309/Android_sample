@@ -61,6 +61,9 @@ public class AnswerActivity extends AppCompatActivity {
         String no = intent.getStringExtra("userBoard_no");
         String subject = intent.getStringExtra("userBoard_subject");
         String content = intent.getStringExtra("userBoard_content").replaceAll("(\\\\n)", "\n");
+        if(content.equals("아직 답변을 안했어요")){
+            content = "";
+        }
         String mood = intent.getStringExtra("userBoard_mood");
 
         userBoard_no.setText(no);
@@ -70,11 +73,11 @@ public class AnswerActivity extends AppCompatActivity {
 
         // radio checked
         Log.d("mood",mood);
-        if(mood.equals("2")){
+        if(mood.equals("\uD83E\uDD70")){
             rad_good.setChecked(true);
-        }else if(mood.equals("1")){
+        }else if(mood.equals("\uD83D\uDE42")){
             rad_soso.setChecked(true);
-        }else if(mood.equals("0")){
+        }else if(mood.equals("\uD83E\uDD75")){
             rad_bad.setChecked(true);
         }
 
@@ -85,15 +88,12 @@ public class AnswerActivity extends AppCompatActivity {
                 switch (i){
                     case R.id.rad_good:
                         rad_result.setText("2");
-                        rad_good.setChecked(true);
                         break;
                     case R.id.rad_soso:
                         rad_result.setText("1");
-                        rad_soso.setChecked(true);
                         break;
                     case R.id.rad_bad:
                         rad_result.setText("0");
-                        rad_bad.setChecked(true);
                         break;
                 }
             }

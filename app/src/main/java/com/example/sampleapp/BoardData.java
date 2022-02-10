@@ -67,18 +67,13 @@ public class BoardData implements Serializable {
 
 
     public String getBoard_content() {
+        if(board_content.equals("null")){
+            board_content = "아직 답변을 안했어요";
+        }
         return board_content;
     }
     public void setBoard_content(String board_content) {
         this.board_content = board_content;
-    }
-
-
-    public String getBoard_hit() {
-        return board_hit;
-    }
-    public void setBoard_hit(String board_hit) {
-        this.board_hit = board_hit;
     }
 
 
@@ -88,6 +83,13 @@ public class BoardData implements Serializable {
     public String getBoard_date() { return board_date; }
 
     public String getBoard_mood() {
+        if(board_mood.equals("2")){
+            board_mood = "\uD83E\uDD70";
+        }else if(board_mood.equals("1")){
+            board_mood = "\uD83D\uDE42";
+        }else if(board_mood.equals("0")){
+            board_mood = "\uD83E\uDD75";
+        }
         return board_mood;
     }
 

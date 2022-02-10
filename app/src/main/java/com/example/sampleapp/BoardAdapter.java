@@ -28,7 +28,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHol
         public TextView board_no;
         public TextView board_subject;
         public TextView board_content;
-        public TextView board_date;
+        public TextView board_date, board_mood;
         public RelativeLayout relativeLayout_expandable;
         public CardView cardView_content;
         private ImageButton btn_answer;
@@ -42,7 +42,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHol
             cardView_content = view.findViewById(R.id.cardView_content);
             board_date = view.findViewById(R.id.board_date);
             btn_answer = view.findViewById(R.id.btn_answer);
-
+            board_mood = view.findViewById(R.id.board_mood);
 
             relativeLayout_expandable = view.findViewById(R.id.relativeLayout_expandable);
 
@@ -92,6 +92,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHol
         viewHolder.board_subject.setText(boardData.getBoard_subject());
         viewHolder.board_content.setText(boardData.getBoard_content().replaceAll("(\\\\n)", "\n"));
         viewHolder.board_date.setText(boardData.getBoard_date());
+        viewHolder.board_mood.setText(boardData.getBoard_mood());
 
         boolean isExpandable = boardDataList.get(position).isExpandable();
         viewHolder.relativeLayout_expandable.setVisibility(isExpandable ? View.VISIBLE : View.GONE);
