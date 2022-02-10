@@ -9,6 +9,7 @@ public class BoardData implements Serializable {
     private String board_hit;
     private String board_date;
     private String user_email;
+    private String board_mood;
     private boolean expandable;
 
     public BoardData() {
@@ -85,4 +86,12 @@ public class BoardData implements Serializable {
         this.board_date = board_date;
     }
     public String getBoard_date() { return board_date; }
+
+    public String getBoard_mood() {
+        return board_mood;
+    }
+
+    public void setBoard_mood(String user_mood) {
+        this.board_mood = user_mood;
+    }
 }

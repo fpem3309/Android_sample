@@ -77,7 +77,15 @@
                     app:progress_stroke_width="15dp"
                     app:progress_text_color="#4363FF"
                     app:progress_text_size="20sp"
-                    app:style="solid_line" />
+                    app:style="solid_line"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🥰"
+                    app:layout_constraintBottom_toTopOf="@+id/good_circle"
+                    app:layout_constraintEnd_toEndOf="@+id/good_circle"
+                    app:layout_constraintStart_toStartOf="@+id/good_circle" />
 
                 <com.dinuscxj.progressbar.CircleProgressBar
                     android:id="@+id/soso_circle"
@@ -94,6 +102,23 @@
                     app:progress_text_color="#00BA03"
                     app:progress_text_size="10sp"
                     app:style="solid_line" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🙂"
+                    app:layout_constraintBottom_toTopOf="@+id/soso_circle"
+                    app:layout_constraintEnd_toEndOf="@+id/soso_circle"
+                    app:layout_constraintStart_toStartOf="@+id/soso_circle" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🥵"
+                    app:layout_constraintBottom_toTopOf="@+id/bad_circle"
+                    app:layout_constraintEnd_toEndOf="@+id/bad_circle"
+                    app:layout_constraintStart_toStartOf="@+id/bad_circle" />
 
                 <com.dinuscxj.progressbar.CircleProgressBar
                     android:id="@+id/bad_circle"
@@ -121,6 +146,16 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+                <TextView
+                    android:id="@+id/tv_allCnt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/answer_circle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <com.dinuscxj.progressbar.CircleProgressBar
                     android:id="@+id/answer_circle"

@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Adapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,10 +30,11 @@ public class AnswerActivity extends AppCompatActivity {
     TextView userBoard_subject;
     EditText userBoard_content;
     TextView userBoard_answerNo;
+
     RadioGroup Rad_mood;
+    RadioButton rad_good, rad_soso, rad_bad;
+
     TextView rad_result;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,18 +49,35 @@ public class AnswerActivity extends AppCompatActivity {
         userBoard_answerNo = findViewById(R.id.userBoard_answerNo);
 
         Rad_mood = findViewById(R.id.Rad_mood);
+
+        rad_good = findViewById(R.id.rad_good);
+        rad_soso = findViewById(R.id.rad_soso);
+        rad_bad = findViewById(R.id.rad_bad);
+
         rad_result = findViewById(R.id.rad_result);
+
 
         Intent intent = getIntent();
         String no = intent.getStringExtra("userBoard_no");
         String subject = intent.getStringExtra("userBoard_subject");
         String content = intent.getStringExtra("userBoard_content").replaceAll("(\\\\n)", "\n");
-
+        String mood = intent.getStringExtra("userBoard_mood");
 
         userBoard_no.setText(no);
         userBoard_subject.setText(subject);
         userBoard_content.setText(content);
         userBoard_answerNo.setText(no+"번째 질문");
+
+        // radio checked
+        Log.d("mood",mood);
+        if(mood.equals("2")){
+            rad_good.setChecked(true);
+        }else if(mood.equals("1")){
+            rad_soso.setChecked(true);
+        }else if(mood.equals("0")){
+            rad_bad.setChecked(true);
+        }
+
 
         Rad_mood.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -66,12 +85,15 @@ public class AnswerActivity extends AppCompatActivity {
                 switch (i){
                     case R.id.rad_good:
                         rad_result.setText("2");
+                        rad_good.setChecked(true);
                         break;
                     case R.id.rad_soso:
                         rad_result.setText("1");
+                        rad_soso.setChecked(true);
                         break;
                     case R.id.rad_bad:
                         rad_result.setText("0");
+                        rad_bad.setChecked(true);
                         break;
                 }
             }

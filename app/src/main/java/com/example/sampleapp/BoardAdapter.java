@@ -65,6 +65,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHol
                     intent.putExtra("userBoard_no", boardData.getBoard_no());
                     intent.putExtra("userBoard_subject", boardData.getBoard_subject());
                     intent.putExtra("userBoard_content", boardData.getBoard_content());
+                    intent.putExtra("userBoard_mood", boardData.getBoard_mood());
                     view.getContext().startActivity(intent);
                 }
             });

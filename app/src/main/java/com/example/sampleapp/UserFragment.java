@@ -30,7 +30,7 @@ import java.util.concurrent.TimeUnit;
 
 public class UserFragment extends Fragment {
 
-    TextView tv_email,tv_password,tv_mood;
+    TextView tv_email,tv_password,tv_mood, tv_allCnt;
     Button btn_news;
     CircleProgressBar answer_circle, good_circle, soso_circle, bad_circle;
 
@@ -43,13 +43,15 @@ public class UserFragment extends Fragment {
         tv_password = view.findViewById(R.id.tv_password);
         btn_news = view.findViewById(R.id.btn_news);
 
+
         good_circle = view.findViewById(R.id.good_circle);
         soso_circle = view.findViewById(R.id.soso_circle);
         bad_circle = view.findViewById(R.id.bad_circle);
 
         tv_mood = view.findViewById(R.id.tv_mood);
-
+        tv_allCnt = view.findViewById(R.id.tv_allCnt);
         answer_circle = view.findViewById(R.id.answer_circle);
+
 
         Bundle bundle = getArguments();
         tv_email.setText(bundle.getString("email"));
@@ -67,17 +69,8 @@ public class UserFragment extends Fragment {
         });
 
         get_moodCnt();
-        Answer_circle();
 
         return view;
-    }
-
-    public void Answer_circle(){
-        int allAnswer = 100;
-        int clearAnswer = 64;
-        int per = (clearAnswer*100)/allAnswer;
-
-        answer_circle.setProgress(per);
     }
 
     public void get_moodCnt(){
@@ -86,6 +79,7 @@ public class UserFragment extends Fragment {
             @Override
             public void onResponse(String response) {
 
+                int complete_cnt = 0;
                 int good_cnt = 0;
                 int soso_cnt = 0;
                 int bad_cnt = 0;
@@ -108,6 +102,9 @@ public class UserFragment extends Fragment {
                         if (obj.getString("userMood").equals("2")) {
                             good_cnt = good_cnt+1;
                         }
+                        if(!obj.getString("userMood").equals("null")){
+                            complete_cnt = complete_cnt+1;
+                        }
                 }
                     Log.d("bad_cnt", String.valueOf(bad_cnt));
                     Log.d("soso_cnt", String.valueOf(soso_cnt));
@@ -128,6 +125,14 @@ public class UserFragment extends Fragment {
                     int bad_per = (bad_cnt*100)/allAnswer;
                     bad_circle.setProgress(bad_per);
 
+
+                    int complete_per = (complete_cnt*100)/allAnswer;
+                    answer_circle.setProgress(complete_per);
+                    if(complete_per != 100) {
+                        tv_allCnt.setText("아직 답변하지 않은 질문이" + (allAnswer - complete_cnt) + "개 남았어요~");
+                    }else{
+                        tv_allCnt.setText("답변하지 않은 질문이 없어요~");
+                    }
                 }catch (Exception e){
                     e.printStackTrace();
                 }
