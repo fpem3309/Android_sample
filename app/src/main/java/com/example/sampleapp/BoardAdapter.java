@@ -93,6 +93,9 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHol
         viewHolder.board_content.setText(boardData.getBoard_content().replaceAll("(\\\\n)", "\n"));
         viewHolder.board_date.setText(boardData.getBoard_date());
         viewHolder.board_mood.setText(boardData.getBoard_mood());
+        if(boardData.getBoard_content().equals("아직 답변을 안했어요")){
+            viewHolder.board_no.setTextColor(0xAA1e6de0);
+        }
 
         boolean isExpandable = boardDataList.get(position).isExpandable();
         viewHolder.relativeLayout_expandable.setVisibility(isExpandable ? View.VISIBLE : View.GONE);

@@ -30,7 +30,7 @@ import java.util.concurrent.TimeUnit;
 
 public class UserFragment extends Fragment {
 
-    TextView tv_email,tv_password,tv_mood, tv_allCnt;
+    TextView tv_email,tv_password,tv_mood, tv_allCnt, tv_goodMood ,tv_sosoMood, tv_badMood;
     Button btn_news;
     CircleProgressBar answer_circle, good_circle, soso_circle, bad_circle;
 
@@ -43,12 +43,14 @@ public class UserFragment extends Fragment {
         tv_password = view.findViewById(R.id.tv_password);
         btn_news = view.findViewById(R.id.btn_news);
 
-
         good_circle = view.findViewById(R.id.good_circle);
         soso_circle = view.findViewById(R.id.soso_circle);
         bad_circle = view.findViewById(R.id.bad_circle);
 
         tv_mood = view.findViewById(R.id.tv_mood);
+        tv_goodMood = view.findViewById(R.id.tv_goodMood);
+        tv_sosoMood = view.findViewById(R.id.tv_sosoMood);
+        tv_badMood = view.findViewById(R.id.tv_badMood);
         tv_allCnt = view.findViewById(R.id.tv_allCnt);
         answer_circle = view.findViewById(R.id.answer_circle);
 
@@ -109,7 +111,7 @@ public class UserFragment extends Fragment {
                     Log.d("bad_cnt", String.valueOf(bad_cnt));
                     Log.d("soso_cnt", String.valueOf(soso_cnt));
                     Log.d("good_cnt", String.valueOf(good_cnt));
-                    tv_mood.setText(String.valueOf(jsonArray.length()));
+                    tv_mood.setText("내 답변 "+complete_cnt+" / "+jsonArray.length()+"개");
 
                     Log.d("mood_cnt", String.valueOf(jsonArray.length())); // 총 개수
 
@@ -118,20 +120,23 @@ public class UserFragment extends Fragment {
 
                     int good_per = (good_cnt*100)/allAnswer;
                     good_circle.setProgress(good_per);
+                    tv_goodMood.setText("좋음은"+good_cnt+"개");
 
                     int soso_per = (soso_cnt*100)/allAnswer;
                     soso_circle.setProgress(soso_per);
+                    tv_sosoMood.setText("보통은"+soso_cnt+"개");
 
                     int bad_per = (bad_cnt*100)/allAnswer;
                     bad_circle.setProgress(bad_per);
+                    tv_badMood.setText("나쁨은"+bad_cnt+"개");
 
 
                     int complete_per = (complete_cnt*100)/allAnswer;
                     answer_circle.setProgress(complete_per);
                     if(complete_per != 100) {
-                        tv_allCnt.setText("아직 답변하지 않은 질문이" + (allAnswer - complete_cnt) + "개 남았어요~");
+                        tv_allCnt.setText("답변하지 않은 질문이 " + (allAnswer - complete_cnt) + "개 남았어요");
                     }else{
-                        tv_allCnt.setText("답변하지 않은 질문이 없어요~");
+                        tv_allCnt.setText("답변하지 않은 질문이 없어요");
                     }
                 }catch (Exception e){
                     e.printStackTrace();
