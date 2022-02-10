@@ -22,7 +22,8 @@
             android:layout_height="wrap_content"
             android:text="List"
             android:textSize="30sp"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:fontFamily="@font/nanumdahaengce"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview"
