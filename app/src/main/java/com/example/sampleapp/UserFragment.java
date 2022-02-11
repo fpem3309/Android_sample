@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import com.android.volley.RequestQueue;
@@ -22,6 +23,7 @@ import com.android.volley.toolbox.Volley;
 import com.dinuscxj.progressbar.CircleProgressBar;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -30,9 +32,10 @@ import java.util.concurrent.TimeUnit;
 
 public class UserFragment extends Fragment {
 
-    TextView tv_email,tv_password,tv_mood, tv_allCnt, tv_goodMood ,tv_sosoMood, tv_badMood;
+    TextView tv_email,tv_password,tv_mood, tv_allCnt, tv_goodMood ,tv_sosoMood, tv_badMood, tv_recentTitle, tv_recentDate;
     Button btn_news;
     CircleProgressBar answer_circle, good_circle, soso_circle, bad_circle;
+    ConstraintLayout lay_recentBoard;
 
     @Nullable
     @Override
@@ -52,7 +55,11 @@ public class UserFragment extends Fragment {
         tv_sosoMood = view.findViewById(R.id.tv_sosoMood);
         tv_badMood = view.findViewById(R.id.tv_badMood);
         tv_allCnt = view.findViewById(R.id.tv_allCnt);
+        tv_recentTitle = view.findViewById(R.id.tv_recentTitle);
+        tv_recentDate = view.findViewById(R.id.tv_recentDate);
         answer_circle = view.findViewById(R.id.answer_circle);
+
+        lay_recentBoard = view.findViewById(R.id.lay_recentBoard);
 
 
         Bundle bundle = getArguments();
@@ -70,8 +77,8 @@ public class UserFragment extends Fragment {
             }
         });
 
+        get_recentAnswer();
         get_moodCnt();
-
         return view;
     }
 
@@ -93,7 +100,6 @@ public class UserFragment extends Fragment {
 
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject obj = jsonArray.getJSONObject(i);
-                        Log.d("mood_obj", String.valueOf(obj));
 
                         if (obj.getString("userMood").equals("0")) {
                             bad_cnt = bad_cnt+1;
@@ -108,6 +114,7 @@ public class UserFragment extends Fragment {
                             complete_cnt = complete_cnt+1;
                         }
                 }
+
                     Log.d("bad_cnt", String.valueOf(bad_cnt));
                     Log.d("soso_cnt", String.valueOf(soso_cnt));
                     Log.d("good_cnt", String.valueOf(good_cnt));
@@ -145,8 +152,64 @@ public class UserFragment extends Fragment {
             }
 
         };
+        Bundle bundle = getArguments();
+        String userEmail = bundle.getString("email");
+        BoardRequest boardRequest = new BoardRequest(userEmail, responseListener);
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        requestQueue.add(boardRequest);
+    }
 
-        MoodRequest moodRequest = new MoodRequest(responseListener);
+    String recent_title="";
+    String recent_date="";
+    String recent_boardNo="";
+    String recent_subject="";
+    String recent_boardContent="";
+    String recent_boardMood="";
+
+    public void get_recentAnswer(){
+
+        Response.Listener<String>listener = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                Log.d("mood2", response);
+
+                try {
+                    JSONArray jsonArray = new JSONArray(response);
+                    Log.d("mood3", String.valueOf(jsonArray));
+
+                    JSONObject obj = jsonArray.getJSONObject(0);
+                    Log.d("mood4", String.valueOf(obj));
+
+                    recent_title =  obj.getString("board_title");
+                    recent_date = obj.getString("board_date");
+                    recent_boardNo = obj.getString("board_no");
+                    recent_boardContent = obj.getString("board_content");
+                    recent_boardMood = obj.getString("userMood");
+
+
+                }catch (JSONException e){
+                    e.printStackTrace();
+                }
+                // 최근 게시물 하나만 setText
+                tv_recentTitle.setText(recent_title);
+                tv_recentDate.setText(recent_date);
+
+                lay_recentBoard.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(getContext(),AnswerActivity.class);
+                        intent.putExtra("userBoard_no", recent_boardNo);
+                        intent.putExtra("userBoard_subject", recent_title);
+                        intent.putExtra("userBoard_content", recent_boardContent);
+                        intent.putExtra("userBoard_mood", recent_boardMood);
+                        view.getContext().startActivity(intent);
+                    }
+                });
+
+            }
+        };
+        MoodRequest moodRequest = new MoodRequest(listener);
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
         requestQueue.add(moodRequest);
     }

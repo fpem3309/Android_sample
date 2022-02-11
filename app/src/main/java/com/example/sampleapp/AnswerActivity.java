@@ -61,7 +61,7 @@ public class AnswerActivity extends AppCompatActivity {
         String no = intent.getStringExtra("userBoard_no");
         String subject = intent.getStringExtra("userBoard_subject");
         String content = intent.getStringExtra("userBoard_content").replaceAll("(\\\\n)", "\n");
-        if(content.equals("아직 답변을 안했어요")){
+        if(content.equals("아직 답변을 안했어요") || content.equals("null")){
             content = "";
         }
         String mood = intent.getStringExtra("userBoard_mood");
@@ -73,11 +73,11 @@ public class AnswerActivity extends AppCompatActivity {
 
         // radio checked
         Log.d("mood",mood);
-        if(mood.equals("\uD83E\uDD70")){
+        if(mood.equals("\uD83E\uDD70")||mood.equals("2")){
             rad_good.setChecked(true);
-        }else if(mood.equals("\uD83D\uDE42")){
+        }else if(mood.equals("\uD83D\uDE42")||mood.equals("1")){
             rad_soso.setChecked(true);
-        }else if(mood.equals("\uD83E\uDD75")){
+        }else if(mood.equals("\uD83E\uDD75")||mood.equals("0")){
             rad_bad.setChecked(true);
         }
 

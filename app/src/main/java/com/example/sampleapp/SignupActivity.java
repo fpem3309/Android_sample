@@ -54,16 +54,43 @@ public class SignupActivity extends AppCompatActivity {
                     public void onResponse(String response) {
 
                         try {
-                            Log.d("Response",response);
+                            Log.d("Response", response);
+
+                            if(response.equals(-1+"")){
+                                Toast.makeText(getApplicationContext(),"이미 있는 이메일입니다..",Toast.LENGTH_SHORT).show();
+                                TextInputEditText_email.requestFocus();
+                                return;
+                            }
+
+                            if(!android.util.Patterns.EMAIL_ADDRESS.matcher(userEmail).matches()){
+                                Toast.makeText(getApplicationContext(),"올바른 이메일 형식이 아닙니다.",Toast.LENGTH_SHORT).show();
+                                TextInputEditText_email.requestFocus();
+                                return;
+                            }
+                            if(userPassword.equals("")){
+                                Toast.makeText(getApplicationContext(),"비밀번호를 입력하세요.",Toast.LENGTH_SHORT).show();
+                                TextInputEditText_password.requestFocus();
+                                return;
+                            }
+                            if(userPassword_chk.equals("")){
+                                Toast.makeText(getApplicationContext(),"비밀번호 확인을 입력하세요.",Toast.LENGTH_SHORT).show();
+                                TextInputEditText_password_chk.requestFocus();
+                                return;
+                            }
+                            if(!userPassword.equals(userPassword_chk)){
+                                Toast.makeText(getApplicationContext(),"비밀번호를 확인하세요.",Toast.LENGTH_SHORT).show();
+                                TextInputEditText_password_chk.requestFocus();
+                                return;
+                            }
                             if(userPassword.equals(userPassword_chk) && response.equals(1)){
 
                                 Intent intent = new Intent(SignupActivity.this, MainActivity.class);
                                 startActivity(intent);
 
-                                Toast.makeText(getApplicationContext(), "가입 성공하였습니다.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "회원가입을 성공하였습니다.", Toast.LENGTH_SHORT).show();
 
                             }else {
-                                Toast.makeText(getApplicationContext(),"비번이 다릅니당.",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(),"회원가입을 실패하였습니다.",Toast.LENGTH_SHORT).show();
                                 return;
                             }
                         } catch (Exception e) {
