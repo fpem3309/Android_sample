@@ -5,22 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    tools:menu="@menu/activity_menu">
-
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        app:backgroundTint="#FBFBFB"
-        app:labelVisibilityMode="labeled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/activity_menu"
-        app:itemTextColor="@drawable/bottom_color"
-        app:itemIconTint="@drawable/bottom_color"/>
+    tools:context=".LoginActivity"
+    app:menu="@menu/activity_menu"
+    >
 
     <FrameLayout
         android:id="@+id/frameLayout"
@@ -32,6 +19,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/activity_menu"
+        app:backgroundTint="@color/white"
+        app:itemTextColor="@drawable/nv_select_color"
+        app:itemIconTint="@drawable/nv_select_color"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

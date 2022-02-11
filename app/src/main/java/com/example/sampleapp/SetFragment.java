@@ -20,13 +20,15 @@ import java.util.List;
 public class SetFragment extends Fragment {
 
     Button go_question;
-
+    TextView tv_name, tv_birth;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_set, container, false);
         go_question = view.findViewById(R.id.go_question);
+        tv_name = view.findViewById(R.id.tv_name);
+        tv_birth = view.findViewById(R.id.tv_birth);
 
         go_question.setOnClickListener(new View.OnClickListener() {
             @Override

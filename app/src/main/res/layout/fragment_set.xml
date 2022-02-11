@@ -18,23 +18,70 @@
                 android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/nanumdahaengce"
                 android:gravity="center"
                 android:text="My page"
                 android:textSize="30sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:fontFamily="@font/nanumdahaengce"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <Button
                 android:id="@+id/go_question"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginEnd="20dp"
+                android:text="문의하기"
+                app:layout_constraintBottom_toBottomOf="@+id/go_question2"
+                app:layout_constraintEnd_toStartOf="@+id/go_question2"
+                app:layout_constraintTop_toTopOf="@+id/go_question2" />
+
+            <Button
+                android:id="@+id/go_question2"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:text="문의하기"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/tv_birth"
+                app:layout_constraintStart_toStartOf="@+id/tv_birth"
+                app:layout_constraintTop_toBottomOf="@+id/tv_birth" />
+
+            <Button
+                android:id="@+id/go_question3"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="20dp"
+                android:text="문의하기"
+                app:layout_constraintBottom_toBottomOf="@+id/go_question2"
+                app:layout_constraintStart_toEndOf="@+id/go_question2"
+                app:layout_constraintTop_toTopOf="@+id/go_question2"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="80dp"
+                android:gravity="center"
+                android:text="My Name"
+                android:textSize="25sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/textView3"/>
+
+            <TextView
+                android:id="@+id/tv_birth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="My birth"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_name"
+                app:layout_constraintHorizontal_bias="0.43"
+                app:layout_constraintStart_toStartOf="@+id/tv_name"
+                app:layout_constraintTop_toBottomOf="@+id/tv_name" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

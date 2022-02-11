@@ -1,6 +1,7 @@
 package com.example.sampleapp;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -144,6 +145,7 @@ public class UserFragment extends Fragment {
                         tv_allCnt.setText("답변하지 않은 질문이 " + (allAnswer - complete_cnt) + "개 남았어요");
                     }else{
                         tv_allCnt.setText("답변하지 않은 질문이 없어요");
+                        tv_allCnt.setTextColor(Color.parseColor("#FF00D8FF"));
                     }
                 }catch (Exception e){
                     e.printStackTrace();
@@ -162,7 +164,6 @@ public class UserFragment extends Fragment {
     String recent_title="";
     String recent_date="";
     String recent_boardNo="";
-    String recent_subject="";
     String recent_boardContent="";
     String recent_boardMood="";
 

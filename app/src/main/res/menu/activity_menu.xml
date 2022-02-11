@@ -2,11 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/user_tab"
-        android:title="메인" />
+        android:icon="@android:drawable/btn_star_big_off"
+        android:title="Main"
+        />
     <item
         android:id="@+id/board_tab"
-        android:title="게시판" />
+        android:icon="@android:drawable/stat_notify_chat"
+        android:title="Board"/>
     <item
         android:id="@+id/set_tab"
-        android:title="설정" />
+        android:icon="@android:drawable/ic_menu_my_calendar"
+        android:title="My"/>
 </menu>

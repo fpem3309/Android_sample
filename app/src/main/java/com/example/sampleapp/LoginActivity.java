@@ -60,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
                         getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,fragment_set).commit();
                         break;
                 }
-                return false;
+                return true; // true 해야 색상 변경됨..?
             }
         });
 

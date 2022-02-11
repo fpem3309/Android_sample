@@ -189,21 +189,24 @@
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
                 <TextView
+                    android:id="@+id/tv_mood"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="@+id/answer_circle"
+                    app:layout_constraintStart_toStartOf="@+id/answer_circle"
+                    app:layout_constraintTop_toBottomOf="@+id/answer_circle"
+                    android:layout_marginTop="10dp"/>
+
+                <TextView
                     android:id="@+id/tv_allCnt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="@+id/answer_circle"
                     app:layout_constraintStart_toStartOf="@+id/answer_circle"
                     app:layout_constraintTop_toBottomOf="@+id/tv_mood"
-                    android:textSize="10sp"/>
-
-                <TextView
-                    android:id="@+id/tv_mood"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="@+id/answer_circle"
-                    app:layout_constraintStart_toStartOf="@+id/answer_circle"
-                    app:layout_constraintTop_toBottomOf="@+id/answer_circle" />
+                    android:layout_marginTop="10dp"
+                    android:textSize="10sp"
+                    android:textColor="#FF0000"/>
 
                 <com.dinuscxj.progressbar.CircleProgressBar
                     android:id="@+id/answer_circle"
