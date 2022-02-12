@@ -15,6 +15,7 @@ import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.textfield.TextInputEditText;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -55,8 +56,10 @@ public class SignupActivity extends AppCompatActivity {
 
                         try {
                             Log.d("Response", response);
-
-                            if(response.equals(-1+"")){
+                            JSONObject obj = new JSONObject(response);
+                            int success = obj.getInt("sign");
+                            Log.d("Response2", String.valueOf(success));
+                            if(success == -1){
                                 Toast.makeText(getApplicationContext(),"이미 있는 이메일입니다..",Toast.LENGTH_SHORT).show();
                                 TextInputEditText_email.requestFocus();
                                 return;
@@ -82,7 +85,7 @@ public class SignupActivity extends AppCompatActivity {
                                 TextInputEditText_password_chk.requestFocus();
                                 return;
                             }
-                            if(userPassword.equals(userPassword_chk) && response.equals(1)){
+                            if((success == 1) && (userPassword.equals(userPassword_chk)) ){
 
                                 Intent intent = new Intent(SignupActivity.this, MainActivity.class);
                                 startActivity(intent);
@@ -98,7 +101,7 @@ public class SignupActivity extends AppCompatActivity {
                         }
                     }
                 };
-                    SignupRequest signupRequest = new SignupRequest(userEmail, userPassword, responseListener);
+                    SignupRequest signupRequest = new SignupRequest(userEmail, userPassword, userPassword_chk, responseListener);
                     RequestQueue queue = Volley.newRequestQueue(SignupActivity.this);
                     queue.add(signupRequest);
             }
