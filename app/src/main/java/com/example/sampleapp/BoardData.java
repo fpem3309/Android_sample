@@ -84,11 +84,13 @@ public class BoardData implements Serializable {
 
     public String getBoard_mood() {
         if(board_mood.equals("2")){
-            board_mood = "\uD83E\uDD70";
+            board_mood = "\uD83D\uDE04";
         }else if(board_mood.equals("1")){
-            board_mood = "\uD83D\uDE42";
+            board_mood = "\uD83D\uDE10";
         }else if(board_mood.equals("0")){
-            board_mood = "\uD83E\uDD75";
+            board_mood = "\uD83D\uDE21";
+        }else if(board_mood.equals("null")){
+                board_mood = "❓";
         }
         return board_mood;
     }

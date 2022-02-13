@@ -95,7 +95,7 @@ public class BoardFragment extends Fragment {
                     boardData.setBoard_no(obj.getString("board_no"));
                     boardData.setBoard_subject(obj.getString("board_title"));
                     boardData.setBoard_content(obj.getString("board_content"));
-                    boardData.setBoard_date(obj.getString("board_date"));
+                    boardData.setBoard_date(obj.getString("board_date").substring(0, obj.getString("board_date").indexOf(" ")));
                     boardData.setUser_email(obj.getString("userEmail"));
                     boardData.setBoard_mood(obj.getString("userMood"));
 

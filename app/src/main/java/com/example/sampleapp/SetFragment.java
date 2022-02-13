@@ -28,7 +28,9 @@ public class SetFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_set, container, false);
         go_question = view.findViewById(R.id.go_question);
         tv_name = view.findViewById(R.id.tv_name);
-        tv_birth = view.findViewById(R.id.tv_birth);
+
+        Bundle extras = getArguments();
+        tv_name.setText(extras.getString("email"));
 
         go_question.setOnClickListener(new View.OnClickListener() {
             @Override

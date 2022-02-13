@@ -13,6 +13,7 @@
         android:layout_gravity="center"
         android:layout_marginBottom="16dp"
         android:gravity="center"
+        android:layout_marginTop="30dp"
         android:text="Sign Up"
         android:textSize="40sp"
         android:fontFamily="@font/nanumdahaengce"/>
@@ -61,16 +62,6 @@
             android:id="@+id/TextInputEditText_name"/>
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp">
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:hint="Birth"
-            android:id="@+id/TextInputEditText_birth"/>
-    </com.google.android.material.textfield.TextInputLayout>
 
     <RelativeLayout
         android:id="@+id/RelativeLayout_Signup"

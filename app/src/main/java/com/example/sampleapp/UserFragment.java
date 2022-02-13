@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,6 +22,8 @@ import androidx.fragment.app.Fragment;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 import com.dinuscxj.progressbar.CircleProgressBar;
 
 import org.json.JSONArray;
@@ -33,7 +36,7 @@ import java.util.concurrent.TimeUnit;
 
 public class UserFragment extends Fragment {
 
-    TextView tv_email,tv_password,tv_mood, tv_allCnt, tv_goodMood ,tv_sosoMood, tv_badMood, tv_recentTitle, tv_recentDate;
+    TextView tv_email,tv_password,tv_mood, tv_allCnt, tv_goodMood ,tv_sosoMood, tv_badMood, tv_recentTitle, tv_recentDate, tv_recentAnswer;
     Button btn_news;
     CircleProgressBar answer_circle, good_circle, soso_circle, bad_circle;
     ConstraintLayout lay_recentBoard;
@@ -43,6 +46,7 @@ public class UserFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_user, container, false);
+
         tv_email = view.findViewById(R.id.tv_email);
         tv_password = view.findViewById(R.id.tv_password);
         btn_news = view.findViewById(R.id.btn_news);
@@ -58,6 +62,7 @@ public class UserFragment extends Fragment {
         tv_allCnt = view.findViewById(R.id.tv_allCnt);
         tv_recentTitle = view.findViewById(R.id.tv_recentTitle);
         tv_recentDate = view.findViewById(R.id.tv_recentDate);
+        tv_recentAnswer = view.findViewById(R.id.tv_recentAnswer);
         answer_circle = view.findViewById(R.id.answer_circle);
 
         lay_recentBoard = view.findViewById(R.id.lay_recentBoard);
@@ -126,6 +131,8 @@ public class UserFragment extends Fragment {
                     // Mood별 퍼센트 구하기
                     int allAnswer = jsonArray.length();
 
+                    tv_recentAnswer.setText(allAnswer+"th 질문");
+
                     int good_per = (good_cnt*100)/allAnswer;
                     good_circle.setProgress(good_per);
                     tv_goodMood.setText("좋음은"+good_cnt+"개");
@@ -183,7 +190,7 @@ public class UserFragment extends Fragment {
                     Log.d("mood4", String.valueOf(obj));
 
                     recent_title =  obj.getString("board_title");
-                    recent_date = obj.getString("board_date");
+                    recent_date = obj.getString("board_date").substring(0, obj.getString("board_date").indexOf(" "));
                     recent_boardNo = obj.getString("board_no");
                     recent_boardContent = obj.getString("board_content");
                     recent_boardMood = obj.getString("userMood");
@@ -204,6 +211,7 @@ public class UserFragment extends Fragment {
                         intent.putExtra("userBoard_subject", recent_title);
                         intent.putExtra("userBoard_content", recent_boardContent);
                         intent.putExtra("userBoard_mood", recent_boardMood);
+                        intent.putExtra("userBoard_date",recent_date);
                         view.getContext().startActivity(intent);
                     }
                 });

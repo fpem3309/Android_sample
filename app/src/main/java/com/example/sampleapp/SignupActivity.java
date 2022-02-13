@@ -35,7 +35,6 @@ public class SignupActivity extends AppCompatActivity {
         RelativeLayout_Signup = findViewById(R.id.RelativeLayout_Signup);
         TextInputEditText_password_chk = findViewById(R.id.TextInputEditText_password_chk);
         TextInputEditText_name = findViewById(R.id.TextInputEditText_name);
-        TextInputEditText_birth = findViewById(R.id.TextInputEditText_birth);
 
 
 
@@ -48,6 +47,7 @@ public class SignupActivity extends AppCompatActivity {
                 String userEmail = TextInputEditText_email.getText().toString();
                 String userPassword = TextInputEditText_password.getText().toString();
                 String userPassword_chk = TextInputEditText_password_chk.getText().toString();
+                String userName = TextInputEditText_name.getText().toString();
 
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
 
@@ -85,7 +85,12 @@ public class SignupActivity extends AppCompatActivity {
                                 TextInputEditText_password_chk.requestFocus();
                                 return;
                             }
-                            if((success == 1) && (userPassword.equals(userPassword_chk)) ){
+                            if(TextInputEditText_name.equals("")){
+                                Toast.makeText(getApplicationContext(),"사용할 이름을 입력하세요.",Toast.LENGTH_SHORT).show();
+                                TextInputEditText_name.requestFocus();
+                                return;
+                            }
+                            if((success == 1) && (userPassword.equals(userPassword_chk)) && !TextInputEditText_name.equals("") ){
 
                                 Intent intent = new Intent(SignupActivity.this, MainActivity.class);
                                 startActivity(intent);
@@ -101,7 +106,7 @@ public class SignupActivity extends AppCompatActivity {
                         }
                     }
                 };
-                    SignupRequest signupRequest = new SignupRequest(userEmail, userPassword, userPassword_chk, responseListener);
+                    SignupRequest signupRequest = new SignupRequest(userEmail, userPassword, userPassword_chk, userName, responseListener);
                     RequestQueue queue = Volley.newRequestQueue(SignupActivity.this);
                     queue.add(signupRequest);
             }

@@ -4,27 +4,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 public class AnswerActivity extends AppCompatActivity {
-    ImageButton btn_del;
+    ImageButton btn_close;
     ImageButton btn_add;
     TextView userBoard_no;
     TextView userBoard_subject;
@@ -42,7 +35,7 @@ public class AnswerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_answer);
 
         btn_add = findViewById(R.id.btn_add);
-        btn_del = findViewById(R.id.btn_del);
+        btn_close = findViewById(R.id.btn_close);
         userBoard_no = findViewById(R.id.userBoard_no);
         userBoard_subject = findViewById(R.id.userBoard_subject);
         userBoard_content = findViewById(R.id.userBoard_content);
@@ -65,19 +58,20 @@ public class AnswerActivity extends AppCompatActivity {
             content = "";
         }
         String mood = intent.getStringExtra("userBoard_mood");
+        String date = intent.getStringExtra("userBoard_date");
 
         userBoard_no.setText(no);
         userBoard_subject.setText(subject);
         userBoard_content.setText(content);
-        userBoard_answerNo.setText(no+"번째 질문");
+        userBoard_answerNo.setText("# "+no+"th\t질문\t"+date);
 
         // radio checked
         Log.d("mood",mood);
-        if(mood.equals("\uD83E\uDD70")||mood.equals("2")){
+        if(mood.equals("\uD83D\uDE04")||mood.equals("2")){
             rad_good.setChecked(true);
-        }else if(mood.equals("\uD83D\uDE42")||mood.equals("1")){
+        }else if(mood.equals("\uD83D\uDE10")||mood.equals("1")){
             rad_soso.setChecked(true);
-        }else if(mood.equals("\uD83E\uDD75")||mood.equals("0")){
+        }else if(mood.equals("\uD83D\uDE21")||mood.equals("0")){
             rad_bad.setChecked(true);
         }
 
@@ -126,7 +120,7 @@ public class AnswerActivity extends AppCompatActivity {
 
         });
 
-        btn_del.setOnClickListener(new View.OnClickListener() {
+        btn_close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
