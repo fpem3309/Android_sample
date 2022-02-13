@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
 
     RelativeLayout RelativeLayout_login, RelativeLayout_signup;
     TextInputEditText TextInputEditText_email, TextInputEditText_password;
-    Button btn_signup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

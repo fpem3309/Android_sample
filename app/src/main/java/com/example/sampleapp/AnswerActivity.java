@@ -9,6 +9,7 @@ import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -69,10 +70,13 @@ public class AnswerActivity extends AppCompatActivity {
         Log.d("mood",mood);
         if(mood.equals("\uD83D\uDE04")||mood.equals("2")){
             rad_good.setChecked(true);
+            rad_result.setText("2");
         }else if(mood.equals("\uD83D\uDE10")||mood.equals("1")){
             rad_soso.setChecked(true);
+            rad_result.setText("1");
         }else if(mood.equals("\uD83D\uDE21")||mood.equals("0")){
             rad_bad.setChecked(true);
+            rad_result.setText("0");
         }
 
 
@@ -107,7 +111,7 @@ public class AnswerActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         try {
                                 Log.d("response_content = " ,response);
-                                finish();// BoardFragment의 onResume()함수가 호출, 데이터 새로고침
+                                    finish();// BoardFragment의 onResume()함수가 호출, 데이터 새로고침
                         } catch (Exception e) {
                             e.printStackTrace();
                         }

@@ -20,7 +20,7 @@ import java.util.List;
 public class SetFragment extends Fragment {
 
     Button go_question;
-    TextView tv_name, tv_birth;
+    TextView tv_name;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -29,8 +29,6 @@ public class SetFragment extends Fragment {
         go_question = view.findViewById(R.id.go_question);
         tv_name = view.findViewById(R.id.tv_name);
 
-        Bundle extras = getArguments();
-        tv_name.setText(extras.getString("email"));
 
         go_question.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,6 +37,9 @@ public class SetFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        Bundle extras = getArguments();
+        tv_name.setText(extras.getString("email")+"님 오늘 하루는 어떠셨나요?");
 
         return view;
     }

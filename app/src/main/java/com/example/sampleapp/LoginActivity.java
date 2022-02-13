@@ -58,21 +58,12 @@ public class LoginActivity extends AppCompatActivity {
                         break;
                     case R.id.set_tab:
                         getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,fragment_set).commit();
+                        bundle.putString("email",userEmail);
+                        fragment_set.setArguments(bundle);
                         break;
                 }
                 return true; // true 해야 색상 변경됨..?
             }
         });
-
-        //받아온 user 정보
-//        Intent intent = getIntent();
-//        Bundle bundle = intent.getExtras();
-//        String email = bundle.getString("email");
-//        String password = bundle.getString("password");
-
-//        //fragment로 보낼 user 정보
-//        bundle.putString("email",email);
-//        bundle.putString("password",password);
-//        fragment_user.setArguments(bundle);
     }
 }
