@@ -25,10 +25,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHol
 
     public class BoardViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView board_no;
-        public TextView board_subject;
-        public TextView board_content;
-        public TextView board_date, board_mood;
+        public TextView board_no, board_subject, board_content, board_date, board_mood;
         public RelativeLayout relativeLayout_expandable;
         public CardView cardView_content;
         private ImageButton btn_answer;

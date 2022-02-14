@@ -18,12 +18,9 @@ import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 
 public class AnswerActivity extends AppCompatActivity {
-    ImageButton btn_close;
-    ImageButton btn_add;
-    TextView userBoard_no;
-    TextView userBoard_subject;
+    ImageButton btn_add, btn_close;
+    TextView userBoard_no, userBoard_subject, userBoard_answerNo;
     EditText userBoard_content;
-    TextView userBoard_answerNo;
 
     RadioGroup Rad_mood;
     RadioButton rad_good, rad_soso, rad_bad;

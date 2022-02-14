@@ -61,15 +61,12 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(String response) {
 
                         try {
-                            // TODO : 인코딩 문제때문에 한글 DB인 경우 로그인 불가
-                            Log.d("login_response",response);
                             // String으로 그냥 못 보냄으로 JSON Object 형태로 변형하여 전송
                             // 서버 통신하여 회원가입 성공 여부를 jsonResponse로 받음
 
                             JSONArray jsonArray = new JSONArray(response);
-                            Log.d("login_response2", String.valueOf(jsonArray));
                             JSONObject obj = jsonArray.getJSONObject(0);
-                            Log.d("login_response3", obj.getString("login"));
+                            Log.d("login_response", obj.getString("login"));
 
                             if(obj.getString("login").equals("true")){
                                 Toast.makeText(getApplicationContext(), "로그인에 성공하였습니다.", Toast.LENGTH_SHORT).show();
@@ -79,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                                 intent.putExtra("userPassword", userPassword);
                                 startActivity(intent);
                             }else{
-                                Toast.makeText(getApplicationContext(), "로그인에 실패.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "아이디 혹은 비밀번호를 확인해주세요.", Toast.LENGTH_SHORT).show();
                                 return;
                             }
 

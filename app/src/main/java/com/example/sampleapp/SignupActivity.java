@@ -23,7 +23,7 @@ public class SignupActivity extends AppCompatActivity {
 
     RelativeLayout RelativeLayout_Signup;
     TextInputEditText TextInputEditText_email, TextInputEditText_password, TextInputEditText_password_chk,
-    TextInputEditText_name, TextInputEditText_birth;
+    TextInputEditText_name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
