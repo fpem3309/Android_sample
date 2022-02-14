@@ -135,15 +135,15 @@ public class UserFragment extends Fragment {
 
                     int good_per = (good_cnt*100)/allAnswer;
                     good_circle.setProgress(good_per);
-                    tv_goodMood.setText("좋음은"+good_cnt+"개");
+                    tv_goodMood.setText("좋음 "+good_cnt+"개");
 
                     int soso_per = (soso_cnt*100)/allAnswer;
                     soso_circle.setProgress(soso_per);
-                    tv_sosoMood.setText("보통은"+soso_cnt+"개");
+                    tv_sosoMood.setText("보통 "+soso_cnt+"개");
 
                     int bad_per = (bad_cnt*100)/allAnswer;
                     bad_circle.setProgress(bad_per);
-                    tv_badMood.setText("나쁨은"+bad_cnt+"개");
+                    tv_badMood.setText("나쁨 "+bad_cnt+"개");
 
 
                     int complete_per = (complete_cnt*100)/allAnswer;
