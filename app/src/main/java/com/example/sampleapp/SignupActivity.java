@@ -2,9 +2,12 @@ package com.example.sampleapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -35,6 +38,7 @@ public class SignupActivity extends AppCompatActivity {
         RelativeLayout_Signup = findViewById(R.id.RelativeLayout_Signup);
         TextInputEditText_password_chk = findViewById(R.id.TextInputEditText_password_chk);
         TextInputEditText_name = findViewById(R.id.TextInputEditText_name);
+
 
         // Login 클릭 감지
         RelativeLayout_Signup.setClickable(true);
