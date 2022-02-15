@@ -36,8 +36,6 @@ public class SignupActivity extends AppCompatActivity {
         TextInputEditText_password_chk = findViewById(R.id.TextInputEditText_password_chk);
         TextInputEditText_name = findViewById(R.id.TextInputEditText_name);
 
-
-
         // Login 클릭 감지
         RelativeLayout_Signup.setClickable(true);
         RelativeLayout_Signup.setOnClickListener(new View.OnClickListener() {
@@ -60,7 +58,7 @@ public class SignupActivity extends AppCompatActivity {
                             int success = obj.getInt("sign");
                             Log.d("Response2", String.valueOf(success));
                             if(success == -1){
-                                Toast.makeText(getApplicationContext(),"이미 있는 이메일입니다..",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(),"이미 있는 이메일입니다",Toast.LENGTH_SHORT).show();
                                 TextInputEditText_email.requestFocus();
                                 return;
                             }
