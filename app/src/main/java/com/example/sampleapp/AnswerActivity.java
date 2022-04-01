@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
+import com.example.sampleapp.databinding.ActivityAnswerBinding;
 
 public class AnswerActivity extends AppCompatActivity {
     ImageButton btn_add, btn_close;
@@ -26,26 +27,29 @@ public class AnswerActivity extends AppCompatActivity {
     RadioButton rad_good, rad_soso, rad_bad;
 
     TextView rad_result;
+    private ActivityAnswerBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_answer);
 
-        btn_add = findViewById(R.id.btn_add);
-        btn_close = findViewById(R.id.btn_close);
-        userBoard_no = findViewById(R.id.userBoard_no);
-        userBoard_subject = findViewById(R.id.userBoard_subject);
-        userBoard_content = findViewById(R.id.userBoard_content);
-        userBoard_answerNo = findViewById(R.id.userBoard_answerNo);
+        binding = ActivityAnswerBinding.inflate(getLayoutInflater());
 
-        Rad_mood = findViewById(R.id.Rad_mood);
-
-        rad_good = findViewById(R.id.rad_good);
-        rad_soso = findViewById(R.id.rad_soso);
-        rad_bad = findViewById(R.id.rad_bad);
-
-        rad_result = findViewById(R.id.rad_result);
+//        btn_add = findViewById(R.id.btn_add);
+//        btn_close = findViewById(R.id.btn_close);
+//        userBoard_no = findViewById(R.id.userBoard_no);
+//        userBoard_subject = findViewById(R.id.userBoard_subject);
+//        userBoard_content = findViewById(R.id.userBoard_content);
+//        userBoard_answerNo = findViewById(R.id.userBoard_answerNo);
+//
+//        Rad_mood = findViewById(R.id.Rad_mood);
+//
+//        rad_good = findViewById(R.id.rad_good);
+//        rad_soso = findViewById(R.id.rad_soso);
+//        rad_bad = findViewById(R.id.rad_bad);
+//
+//        rad_result = findViewById(R.id.rad_result);
 
 
         Intent intent = getIntent();

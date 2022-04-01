@@ -108,6 +108,7 @@ public class SignupActivity extends AppCompatActivity {
                         }
                     }
                 };
+
                     SignupRequest signupRequest = new SignupRequest(userEmail, userPassword, userPassword_chk, userName, responseListener);
                     RequestQueue queue = Volley.newRequestQueue(SignupActivity.this);
                     queue.add(signupRequest);
