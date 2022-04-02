@@ -73,16 +73,6 @@ public class UserFragment extends Fragment {
         tv_password.setText(bundle.getString("password"));
 
 
-        btn_news.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), NewsActivity.class);
-                Toast.makeText(getActivity().getApplicationContext(), "News를 보자", Toast.LENGTH_SHORT).show();
-                startActivity(intent);
-
-            }
-        });
-
         get_recentAnswer();
         get_moodCnt();
         return view;
