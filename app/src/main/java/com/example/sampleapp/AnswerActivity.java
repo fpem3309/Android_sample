@@ -34,16 +34,6 @@ public class AnswerActivity extends AppCompatActivity {
 
         btn_add = findViewById(R.id.btn_add);
         btn_close = findViewById(R.id.btn_close);
-        userBoard_no = findViewById(R.id.userBoard_no);
-        userBoard_subject = findViewById(R.id.userBoard_subject);
-        userBoard_content = findViewById(R.id.userBoard_content);
-        userBoard_answerNo = findViewById(R.id.userBoard_answerNo);
-
-        Rad_mood = findViewById(R.id.Rad_mood);
-
-        rad_good = findViewById(R.id.rad_good);
-        rad_soso = findViewById(R.id.rad_soso);
-        rad_bad = findViewById(R.id.rad_bad);
 
         rad_result = findViewById(R.id.rad_result);
 
