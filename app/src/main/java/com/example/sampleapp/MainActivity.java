@@ -63,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
                         try {
                             // String으로 그냥 못 보냄으로 JSON Object 형태로 변형하여 전송
                             // 서버 통신하여 회원가입 성공 여부를 jsonResponse로 받음
-
                             JSONArray jsonArray = new JSONArray(response);
                             JSONObject obj = jsonArray.getJSONObject(0);
                             Log.d("login_response", obj.getString("login"));
